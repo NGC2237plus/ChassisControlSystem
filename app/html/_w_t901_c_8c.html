@@ -1,0 +1,611 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>智能车底盘控制: WT901C.c 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">智能车底盘控制<span id="projectnumber">&#160;2.0</span>
+   </div>
+   <div id="projectbrief">智能车底盘控制程序，根据串口数据控制移动</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#define-members">宏定义</a> &#124;
+<a href="#func-members">函数</a> &#124;
+<a href="#var-members">变量</a>  </div>
+  <div class="headertitle"><div class="title">WT901C.c 文件参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>WT901C陀螺仪，接收并处理陀螺仪数据  
+<a href="#details">更多...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="_w_t901_c_8h_source.html">WT901C.h</a>&quot;</code><br />
+</div>
+<p><a href="_w_t901_c_8c_source.html">浏览该文件的源代码.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:a890e53f032353e4e8d1c37b5c1188927" id="r_a890e53f032353e4e8d1c37b5c1188927"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a890e53f032353e4e8d1c37b5c1188927">WT901C_HEAD</a>&#160;&#160;&#160;0X55</td></tr>
+<tr class="separator:a890e53f032353e4e8d1c37b5c1188927"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6ffd8444080951163b7fe90360a732e" id="r_ae6ffd8444080951163b7fe90360a732e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae6ffd8444080951163b7fe90360a732e">TIME_TYPE</a>&#160;&#160;&#160;0X50</td></tr>
+<tr class="separator:ae6ffd8444080951163b7fe90360a732e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd32fa3d2c4210f10965e9708b7f7187" id="r_abd32fa3d2c4210f10965e9708b7f7187"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abd32fa3d2c4210f10965e9708b7f7187">ACC_TYPE</a>&#160;&#160;&#160;0X51</td></tr>
+<tr class="separator:abd32fa3d2c4210f10965e9708b7f7187"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a970c5e973297d9ee01c29e412f7fcd96" id="r_a970c5e973297d9ee01c29e412f7fcd96"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a970c5e973297d9ee01c29e412f7fcd96">GYRO_TYPE</a>&#160;&#160;&#160;0X52</td></tr>
+<tr class="separator:a970c5e973297d9ee01c29e412f7fcd96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2aaf1f1be4015cfef0f65898a8345a67" id="r_a2aaf1f1be4015cfef0f65898a8345a67"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2aaf1f1be4015cfef0f65898a8345a67">ANGLE_TYPE</a>&#160;&#160;&#160;0X53</td></tr>
+<tr class="separator:a2aaf1f1be4015cfef0f65898a8345a67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefbf43251b59bc3f39ada058dc6ea1d1" id="r_aefbf43251b59bc3f39ada058dc6ea1d1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aefbf43251b59bc3f39ada058dc6ea1d1">MAGNETIC_TYPE</a>&#160;&#160;&#160;0x54</td></tr>
+<tr class="separator:aefbf43251b59bc3f39ada058dc6ea1d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:a09eb1ecf014cf8ae199cb477ae0f9d09" id="r_a09eb1ecf014cf8ae199cb477ae0f9d09"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a09eb1ecf014cf8ae199cb477ae0f9d09">WT901C_SumCRC</a> (uint8_t Type, uint8_t *data)</td></tr>
+<tr class="memdesc:a09eb1ecf014cf8ae199cb477ae0f9d09"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC校验和  <br /></td></tr>
+<tr class="separator:a09eb1ecf014cf8ae199cb477ae0f9d09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3483cd1a148258a7560175f982ae556d" id="r_a3483cd1a148258a7560175f982ae556d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3483cd1a148258a7560175f982ae556d">Time_Dispose</a> (<a class="el" href="struct_w_t901_c___time.html">WT901C_Time</a> *time)</td></tr>
+<tr class="memdesc:a3483cd1a148258a7560175f982ae556d"><td class="mdescLeft">&#160;</td><td class="mdescRight">时间数据解算  <br /></td></tr>
+<tr class="separator:a3483cd1a148258a7560175f982ae556d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e7062c166cec9e7f91b69086cbbf73e" id="r_a3e7062c166cec9e7f91b69086cbbf73e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3e7062c166cec9e7f91b69086cbbf73e">Acc_Dispose</a> (<a class="el" href="struct_w_t901_c___acc.html">WT901C_Acc</a> *acc)</td></tr>
+<tr class="memdesc:a3e7062c166cec9e7f91b69086cbbf73e"><td class="mdescLeft">&#160;</td><td class="mdescRight">加速度数据解算  <br /></td></tr>
+<tr class="separator:a3e7062c166cec9e7f91b69086cbbf73e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55f30cc1c9742b5322902b8052524500" id="r_a55f30cc1c9742b5322902b8052524500"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a55f30cc1c9742b5322902b8052524500">Gyro_Dispose</a> (<a class="el" href="struct_w_t901_c___gyro.html">WT901C_Gyro</a> *gyro)</td></tr>
+<tr class="memdesc:a55f30cc1c9742b5322902b8052524500"><td class="mdescLeft">&#160;</td><td class="mdescRight">角速度数据解算  <br /></td></tr>
+<tr class="separator:a55f30cc1c9742b5322902b8052524500"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a6766abab79287fa1f2c6db80ff22ca" id="r_a3a6766abab79287fa1f2c6db80ff22ca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a6766abab79287fa1f2c6db80ff22ca">Magnetic_Dispose</a> (<a class="el" href="struct_w_t901_c___magnetic.html">WT901C_Magnetic</a> *magnetic)</td></tr>
+<tr class="memdesc:a3a6766abab79287fa1f2c6db80ff22ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">磁场数据解算  <br /></td></tr>
+<tr class="separator:a3a6766abab79287fa1f2c6db80ff22ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a186bd50d77a6ac2a811685d0ea245ee0" id="r_a186bd50d77a6ac2a811685d0ea245ee0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a186bd50d77a6ac2a811685d0ea245ee0">Angle_Dispose</a> (<a class="el" href="struct_w_t901_c___angle.html">WT901C_Angle</a> *angle)</td></tr>
+<tr class="memdesc:a186bd50d77a6ac2a811685d0ea245ee0"><td class="mdescLeft">&#160;</td><td class="mdescRight">角度数据解算  <br /></td></tr>
+<tr class="separator:a186bd50d77a6ac2a811685d0ea245ee0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae494a9643f29b87d6d81e5264e60e57b" id="r_ae494a9643f29b87d6d81e5264e60e57b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae494a9643f29b87d6d81e5264e60e57b">HAL_UART_RxCpltCallback</a> (UART_HandleTypeDef *huart)</td></tr>
+<tr class="memdesc:ae494a9643f29b87d6d81e5264e60e57b"><td class="mdescLeft">&#160;</td><td class="mdescRight">串口接收中断回调函数  <br /></td></tr>
+<tr class="separator:ae494a9643f29b87d6d81e5264e60e57b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+变量</h2></td></tr>
+<tr class="memitem:aeca7de1e90491d1823b43c076f5d97fc" id="r_aeca7de1e90491d1823b43c076f5d97fc"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeca7de1e90491d1823b43c076f5d97fc">Rx_buf</a></td></tr>
+<tr class="separator:aeca7de1e90491d1823b43c076f5d97fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41ef63f845182b59528877c6d184d3af" id="r_a41ef63f845182b59528877c6d184d3af"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a41ef63f845182b59528877c6d184d3af">Rx_flag</a></td></tr>
+<tr class="separator:a41ef63f845182b59528877c6d184d3af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47a72b620ca26ec1fa7bf2f59ef08cd3" id="r_a47a72b620ca26ec1fa7bf2f59ef08cd3"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a47a72b620ca26ec1fa7bf2f59ef08cd3">buffer</a> [9]</td></tr>
+<tr class="separator:a47a72b620ca26ec1fa7bf2f59ef08cd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13379aec418fecfe027087bb7acb4928" id="r_a13379aec418fecfe027087bb7acb4928"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_w_t901_c___time.html">WT901C_Time</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a13379aec418fecfe027087bb7acb4928">IMU_time</a></td></tr>
+<tr class="separator:a13379aec418fecfe027087bb7acb4928"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c1b94753b3c75d22f453ca55858d6c9" id="r_a5c1b94753b3c75d22f453ca55858d6c9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_w_t901_c___acc.html">WT901C_Acc</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5c1b94753b3c75d22f453ca55858d6c9">IMU_acc</a></td></tr>
+<tr class="separator:a5c1b94753b3c75d22f453ca55858d6c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a676a2e149caac8b112485b6c3357a924" id="r_a676a2e149caac8b112485b6c3357a924"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_w_t901_c___gyro.html">WT901C_Gyro</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a676a2e149caac8b112485b6c3357a924">IMU_gyro</a></td></tr>
+<tr class="separator:a676a2e149caac8b112485b6c3357a924"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61a6ad05f0b47e69eb8d6104b4cbf943" id="r_a61a6ad05f0b47e69eb8d6104b4cbf943"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_w_t901_c___angle.html">WT901C_Angle</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a61a6ad05f0b47e69eb8d6104b4cbf943">IMU_angle</a></td></tr>
+<tr class="separator:a61a6ad05f0b47e69eb8d6104b4cbf943"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82f4948e805c781a607c5391fd99ca6b" id="r_a82f4948e805c781a607c5391fd99ca6b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_w_t901_c___magnetic.html">WT901C_Magnetic</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a82f4948e805c781a607c5391fd99ca6b">IMU_magnetic</a></td></tr>
+<tr class="separator:a82f4948e805c781a607c5391fd99ca6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>WT901C陀螺仪，接收并处理陀螺仪数据 </p>
+<dl class="section author"><dt>作者</dt><dd>早上坏 (<a href="#" onclick="location.href='mai'+'lto:'+'sta'+'r3'+'234'+'9@'+'out'+'lo'+'ok.'+'co'+'m'; return false;">star3<span class="obfuscator">.nosp@m.</span>2349<span class="obfuscator">.nosp@m.</span>@outl<span class="obfuscator">.nosp@m.</span>ook.<span class="obfuscator">.nosp@m.</span>com</a>) </dd></dl>
+<dl class="section version"><dt>版本</dt><dd>1.0 </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2024-10-01</dd></dl>
+<dl class="section copyright"><dt>版权所有</dt><dd>Copyright (c) 2024</dd></dl>
+<dl class="section user"><dt>修改日志:</dt><dd><table class="doxtable">
+<tr>
+<th>日期 </th><th>版本 </th><th>作者 </th><th>描述 </th></tr>
+<tr>
+<td>22024-10-01 </td><td>1.0 </td><td>早上坏 </td><td>初始版本 </td></tr>
+</table>
+</dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a href="https://wit-motion.yuque.com/wumwnr/ltst03/vl3tpy?#%20%E3%80%8AWIT%E7%A7%81%E6%9C%89%E5%8D%8F%E8%AE%AE%E3%80%8B">https://wit-motion.yuque.com/wumwnr/ltst03/vl3tpy?#%20%E3%80%8AWIT%E7%A7%81%E6%9C%89%E5%8D%8F%E8%AE%AE%E3%80%8B</a> </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_w_t901_c_8c_source.html">WT901C.c</a> 中定义.</p>
+</div><h2 class="groupheader">宏定义说明</h2>
+<a id="abd32fa3d2c4210f10965e9708b7f7187" name="abd32fa3d2c4210f10965e9708b7f7187"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd32fa3d2c4210f10965e9708b7f7187">&#9670;&#160;</a></span>ACC_TYPE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ACC_TYPE&#160;&#160;&#160;0X51</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>加速度数据头 </p>
+
+<p class="definition">在文件 <a class="el" href="_w_t901_c_8c_source.html">WT901C.c</a> 第 <a class="el" href="_w_t901_c_8c_source.html#l00021">21</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a2aaf1f1be4015cfef0f65898a8345a67" name="a2aaf1f1be4015cfef0f65898a8345a67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2aaf1f1be4015cfef0f65898a8345a67">&#9670;&#160;</a></span>ANGLE_TYPE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ANGLE_TYPE&#160;&#160;&#160;0X53</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>角度数据头 </p>
+
+<p class="definition">在文件 <a class="el" href="_w_t901_c_8c_source.html">WT901C.c</a> 第 <a class="el" href="_w_t901_c_8c_source.html#l00023">23</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a970c5e973297d9ee01c29e412f7fcd96" name="a970c5e973297d9ee01c29e412f7fcd96"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a970c5e973297d9ee01c29e412f7fcd96">&#9670;&#160;</a></span>GYRO_TYPE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GYRO_TYPE&#160;&#160;&#160;0X52</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>角速度数据头 </p>
+
+<p class="definition">在文件 <a class="el" href="_w_t901_c_8c_source.html">WT901C.c</a> 第 <a class="el" href="_w_t901_c_8c_source.html#l00022">22</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aefbf43251b59bc3f39ada058dc6ea1d1" name="aefbf43251b59bc3f39ada058dc6ea1d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefbf43251b59bc3f39ada058dc6ea1d1">&#9670;&#160;</a></span>MAGNETIC_TYPE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAGNETIC_TYPE&#160;&#160;&#160;0x54</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>磁场数据头 </p>
+
+<p class="definition">在文件 <a class="el" href="_w_t901_c_8c_source.html">WT901C.c</a> 第 <a class="el" href="_w_t901_c_8c_source.html#l00024">24</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ae6ffd8444080951163b7fe90360a732e" name="ae6ffd8444080951163b7fe90360a732e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6ffd8444080951163b7fe90360a732e">&#9670;&#160;</a></span>TIME_TYPE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TIME_TYPE&#160;&#160;&#160;0X50</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>时间数据头 </p>
+
+<p class="definition">在文件 <a class="el" href="_w_t901_c_8c_source.html">WT901C.c</a> 第 <a class="el" href="_w_t901_c_8c_source.html#l00020">20</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a890e53f032353e4e8d1c37b5c1188927" name="a890e53f032353e4e8d1c37b5c1188927"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a890e53f032353e4e8d1c37b5c1188927">&#9670;&#160;</a></span>WT901C_HEAD</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WT901C_HEAD&#160;&#160;&#160;0X55</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>协议头 </p>
+
+<p class="definition">在文件 <a class="el" href="_w_t901_c_8c_source.html">WT901C.c</a> 第 <a class="el" href="_w_t901_c_8c_source.html#l00019">19</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">函数说明</h2>
+<a id="a3e7062c166cec9e7f91b69086cbbf73e" name="a3e7062c166cec9e7f91b69086cbbf73e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e7062c166cec9e7f91b69086cbbf73e">&#9670;&#160;</a></span>Acc_Dispose()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Acc_Dispose </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_w_t901_c___acc.html">WT901C_Acc</a> *</td>          <td class="paramname"><span class="paramname"><em>acc</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>加速度数据解算 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">time</td><td>加速度数据 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_w_t901_c_8c_source.html">WT901C.c</a> 第 <a class="el" href="_w_t901_c_8c_source.html#l00132">132</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a186bd50d77a6ac2a811685d0ea245ee0" name="a186bd50d77a6ac2a811685d0ea245ee0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a186bd50d77a6ac2a811685d0ea245ee0">&#9670;&#160;</a></span>Angle_Dispose()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Angle_Dispose </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_w_t901_c___angle.html">WT901C_Angle</a> *</td>          <td class="paramname"><span class="paramname"><em>angle</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>角度数据解算 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">time</td><td>角度数据 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_w_t901_c_8c_source.html">WT901C.c</a> 第 <a class="el" href="_w_t901_c_8c_source.html#l00156">156</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a55f30cc1c9742b5322902b8052524500" name="a55f30cc1c9742b5322902b8052524500"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55f30cc1c9742b5322902b8052524500">&#9670;&#160;</a></span>Gyro_Dispose()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Gyro_Dispose </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_w_t901_c___gyro.html">WT901C_Gyro</a> *</td>          <td class="paramname"><span class="paramname"><em>gyro</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>角速度数据解算 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">time</td><td>角速度数据 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_w_t901_c_8c_source.html">WT901C.c</a> 第 <a class="el" href="_w_t901_c_8c_source.html#l00144">144</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ae494a9643f29b87d6d81e5264e60e57b" name="ae494a9643f29b87d6d81e5264e60e57b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae494a9643f29b87d6d81e5264e60e57b">&#9670;&#160;</a></span>HAL_UART_RxCpltCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HAL_UART_RxCpltCallback </td>
+          <td>(</td>
+          <td class="paramtype">UART_HandleTypeDef *</td>          <td class="paramname"><span class="paramname"><em>huart</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>串口接收中断回调函数 </p>
+<dl class="section note"><dt>注解</dt><dd>函数是HAL库的中断回调，内部需判断串口号以调用不同的串口接收处理 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_w_t901_c_8c_source.html">WT901C.c</a> 第 <a class="el" href="_w_t901_c_8c_source.html#l00045">45</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a3a6766abab79287fa1f2c6db80ff22ca" name="a3a6766abab79287fa1f2c6db80ff22ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a6766abab79287fa1f2c6db80ff22ca">&#9670;&#160;</a></span>Magnetic_Dispose()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Magnetic_Dispose </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_w_t901_c___magnetic.html">WT901C_Magnetic</a> *</td>          <td class="paramname"><span class="paramname"><em>magnetic</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>磁场数据解算 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">time</td><td>磁场数据 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_w_t901_c_8c_source.html">WT901C.c</a> 第 <a class="el" href="_w_t901_c_8c_source.html#l00168">168</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a3483cd1a148258a7560175f982ae556d" name="a3483cd1a148258a7560175f982ae556d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3483cd1a148258a7560175f982ae556d">&#9670;&#160;</a></span>Time_Dispose()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Time_Dispose </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_w_t901_c___time.html">WT901C_Time</a> *</td>          <td class="paramname"><span class="paramname"><em>time</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>时间数据解算 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">time</td><td>时间数据 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_w_t901_c_8c_source.html">WT901C.c</a> 第 <a class="el" href="_w_t901_c_8c_source.html#l00117">117</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a09eb1ecf014cf8ae199cb477ae0f9d09" name="a09eb1ecf014cf8ae199cb477ae0f9d09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09eb1ecf014cf8ae199cb477ae0f9d09">&#9670;&#160;</a></span>WT901C_SumCRC()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t WT901C_SumCRC </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>Type</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>data</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>CRC校验和 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Type</td><td>数据类型 </td></tr>
+    <tr><td class="paramname">data</td><td>数据 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>uint8_t CRC校验和 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_w_t901_c_8c_source.html">WT901C.c</a> 第 <a class="el" href="_w_t901_c_8c_source.html#l00102">102</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">变量说明</h2>
+<a id="a47a72b620ca26ec1fa7bf2f59ef08cd3" name="a47a72b620ca26ec1fa7bf2f59ef08cd3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47a72b620ca26ec1fa7bf2f59ef08cd3">&#9670;&#160;</a></span>buffer</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t buffer[9]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_w_t901_c_8c_source.html">WT901C.c</a> 第 <a class="el" href="_w_t901_c_8c_source.html#l00027">27</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a5c1b94753b3c75d22f453ca55858d6c9" name="a5c1b94753b3c75d22f453ca55858d6c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c1b94753b3c75d22f453ca55858d6c9">&#9670;&#160;</a></span>IMU_acc</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_w_t901_c___acc.html">WT901C_Acc</a> IMU_acc</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>加速度数据 </p>
+
+<p class="definition">在文件 <a class="el" href="_w_t901_c_8c_source.html">WT901C.c</a> 第 <a class="el" href="_w_t901_c_8c_source.html#l00030">30</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a61a6ad05f0b47e69eb8d6104b4cbf943" name="a61a6ad05f0b47e69eb8d6104b4cbf943"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61a6ad05f0b47e69eb8d6104b4cbf943">&#9670;&#160;</a></span>IMU_angle</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_w_t901_c___angle.html">WT901C_Angle</a> IMU_angle</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>角度数据头 </p>
+
+<p class="definition">在文件 <a class="el" href="_w_t901_c_8c_source.html">WT901C.c</a> 第 <a class="el" href="_w_t901_c_8c_source.html#l00032">32</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a676a2e149caac8b112485b6c3357a924" name="a676a2e149caac8b112485b6c3357a924"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a676a2e149caac8b112485b6c3357a924">&#9670;&#160;</a></span>IMU_gyro</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_w_t901_c___gyro.html">WT901C_Gyro</a> IMU_gyro</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>角速度数据 </p>
+
+<p class="definition">在文件 <a class="el" href="_w_t901_c_8c_source.html">WT901C.c</a> 第 <a class="el" href="_w_t901_c_8c_source.html#l00031">31</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a82f4948e805c781a607c5391fd99ca6b" name="a82f4948e805c781a607c5391fd99ca6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82f4948e805c781a607c5391fd99ca6b">&#9670;&#160;</a></span>IMU_magnetic</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_w_t901_c___magnetic.html">WT901C_Magnetic</a> IMU_magnetic</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>磁场数据头 </p>
+
+<p class="definition">在文件 <a class="el" href="_w_t901_c_8c_source.html">WT901C.c</a> 第 <a class="el" href="_w_t901_c_8c_source.html#l00033">33</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a13379aec418fecfe027087bb7acb4928" name="a13379aec418fecfe027087bb7acb4928"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13379aec418fecfe027087bb7acb4928">&#9670;&#160;</a></span>IMU_time</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_w_t901_c___time.html">WT901C_Time</a> IMU_time</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>时间数据 </p>
+
+<p class="definition">在文件 <a class="el" href="_w_t901_c_8c_source.html">WT901C.c</a> 第 <a class="el" href="_w_t901_c_8c_source.html#l00029">29</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aeca7de1e90491d1823b43c076f5d97fc" name="aeca7de1e90491d1823b43c076f5d97fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeca7de1e90491d1823b43c076f5d97fc">&#9670;&#160;</a></span>Rx_buf</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Rx_buf</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_w_t901_c_8c_source.html">WT901C.c</a> 第 <a class="el" href="_w_t901_c_8c_source.html#l00026">26</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a41ef63f845182b59528877c6d184d3af" name="a41ef63f845182b59528877c6d184d3af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41ef63f845182b59528877c6d184d3af">&#9670;&#160;</a></span>Rx_flag</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Rx_flag</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_w_t901_c_8c_source.html">WT901C.c</a> 第 <a class="el" href="_w_t901_c_8c_source.html#l00026">26</a> 行定义.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

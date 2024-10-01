@@ -1,0 +1,18 @@
+{
+    "files.associations": {
+        "chassis.h": "c",
+        "motor_pid.h": "c",
+        "motor_speed.h": "c",
+        "tim.h": "c",
+        "main.h": "c",
+        "usart.h": "c",
+        "freertos.h": "c",
+        "pid.h": "c",
+        "math.h": "c",
+        "wt901c.h": "c",
+        "stm32f4xx_hal.h": "c",
+        "imu.h": "c",
+        "type_traits": "c",
+        "crc.h": "c"
+    }
+}

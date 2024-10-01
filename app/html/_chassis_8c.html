@@ -1,0 +1,704 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>智能车底盘控制: Chassis.c 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">智能车底盘控制<span id="projectnumber">&#160;2.0</span>
+   </div>
+   <div id="projectbrief">智能车底盘控制程序，根据串口数据控制移动</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#define-members">宏定义</a> &#124;
+<a href="#func-members">函数</a> &#124;
+<a href="#var-members">变量</a>  </div>
+  <div class="headertitle"><div class="title">Chassis.c 文件参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>底盘运动控制  
+<a href="#details">更多...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="_chassis_8h_source.html">chassis.h</a>&quot;</code><br />
+</div>
+<p><a href="_chassis_8c_source.html">浏览该文件的源代码.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:acbcbdcfb463c5497a9a3999b2dacc046" id="r_acbcbdcfb463c5497a9a3999b2dacc046"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acbcbdcfb463c5497a9a3999b2dacc046">Wheel_Diameter</a>&#160;&#160;&#160;0.06f</td></tr>
+<tr class="separator:acbcbdcfb463c5497a9a3999b2dacc046"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0097b53639a233231fc3dd7945dee88c" id="r_a0097b53639a233231fc3dd7945dee88c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0097b53639a233231fc3dd7945dee88c">Speed_Factor</a>&#160;&#160;&#160;0.001f</td></tr>
+<tr class="separator:a0097b53639a233231fc3dd7945dee88c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc6615200a1e6e1a71179386a8864c00" id="r_adc6615200a1e6e1a71179386a8864c00"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adc6615200a1e6e1a71179386a8864c00">Pulse_Num</a>&#160;&#160;&#160;390.0f</td></tr>
+<tr class="separator:adc6615200a1e6e1a71179386a8864c00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c8de73bb604d91743c7f6f356eb171e" id="r_a6c8de73bb604d91743c7f6f356eb171e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6c8de73bb604d91743c7f6f356eb171e">DIR</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a6c8de73bb604d91743c7f6f356eb171e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87136345a801595323e8b06298c1c70b" id="r_a87136345a801595323e8b06298c1c70b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a87136345a801595323e8b06298c1c70b">Limit_Max</a>(value,  Max)</td></tr>
+<tr class="memdesc:a87136345a801595323e8b06298c1c70b"><td class="mdescLeft">&#160;</td><td class="mdescRight">最大值限制  <br /></td></tr>
+<tr class="separator:a87136345a801595323e8b06298c1c70b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9f22010302f7726dcc3eb38c2320222" id="r_ab9f22010302f7726dcc3eb38c2320222"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab9f22010302f7726dcc3eb38c2320222">Limit_Min</a>(value,  Min)</td></tr>
+<tr class="memdesc:ab9f22010302f7726dcc3eb38c2320222"><td class="mdescLeft">&#160;</td><td class="mdescRight">最小值限制  <br /></td></tr>
+<tr class="separator:ab9f22010302f7726dcc3eb38c2320222"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:a3a2fa8dcfd5f1943e705549f96c76739" id="r_a3a2fa8dcfd5f1943e705549f96c76739"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a2fa8dcfd5f1943e705549f96c76739">Chassis_Task</a> (void const *argument)</td></tr>
+<tr class="memdesc:a3a2fa8dcfd5f1943e705549f96c76739"><td class="mdescLeft">&#160;</td><td class="mdescRight">底盘FreeRTOS任务  <br /></td></tr>
+<tr class="separator:a3a2fa8dcfd5f1943e705549f96c76739"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a3b0ad512a6e6c6157440b68d395eac" id="r_a8a3b0ad512a6e6c6157440b68d395eac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8a3b0ad512a6e6c6157440b68d395eac">HAL_TIM_PeriodElapsedCallback</a> (TIM_HandleTypeDef *htim)</td></tr>
+<tr class="memdesc:a8a3b0ad512a6e6c6157440b68d395eac"><td class="mdescLeft">&#160;</td><td class="mdescRight">定时器中断回调函数  <br /></td></tr>
+<tr class="separator:a8a3b0ad512a6e6c6157440b68d395eac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0cd91fd3a9608559c2a87a8ba6cba55f" id="r_a0cd91fd3a9608559c2a87a8ba6cba55f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0cd91fd3a9608559c2a87a8ba6cba55f">HAL_GPIO_EXTI_Callback</a> (uint16_t GPIO_Pin)</td></tr>
+<tr class="memdesc:a0cd91fd3a9608559c2a87a8ba6cba55f"><td class="mdescLeft">&#160;</td><td class="mdescRight">GPIO中断回调函数  <br /></td></tr>
+<tr class="separator:a0cd91fd3a9608559c2a87a8ba6cba55f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2f52bef32af3cebd75343365c866ed2" id="r_ae2f52bef32af3cebd75343365c866ed2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae2f52bef32af3cebd75343365c866ed2">PWM_Init</a> (TIM_HandleTypeDef *timHandle)</td></tr>
+<tr class="memdesc:ae2f52bef32af3cebd75343365c866ed2"><td class="mdescLeft">&#160;</td><td class="mdescRight">启动定时器PWM输出  <br /></td></tr>
+<tr class="separator:ae2f52bef32af3cebd75343365c866ed2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48a3c4273e4c8e998aa80eb90170a51d" id="r_a48a3c4273e4c8e998aa80eb90170a51d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a48a3c4273e4c8e998aa80eb90170a51d">Motor_PWM</a> (void)</td></tr>
+<tr class="memdesc:a48a3c4273e4c8e998aa80eb90170a51d"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置占空比，控制电机旋转  <br /></td></tr>
+<tr class="separator:a48a3c4273e4c8e998aa80eb90170a51d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a743d09a664ce05032a94ab58ecb12935" id="r_a743d09a664ce05032a94ab58ecb12935"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a743d09a664ce05032a94ab58ecb12935">Motor_Speed</a> (int16_t vx, int16_t vy, int16_t RotateV)</td></tr>
+<tr class="memdesc:a743d09a664ce05032a94ab58ecb12935"><td class="mdescLeft">&#160;</td><td class="mdescRight">计算设置速度  <br /></td></tr>
+<tr class="separator:a743d09a664ce05032a94ab58ecb12935"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5405e3de5bf8abbbc9b97e2d8025d9b5" id="r_a5405e3de5bf8abbbc9b97e2d8025d9b5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5405e3de5bf8abbbc9b97e2d8025d9b5">Chassis_UART_RxCpltCallback</a> (void)</td></tr>
+<tr class="memdesc:a5405e3de5bf8abbbc9b97e2d8025d9b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">底盘串口回调函数  <br /></td></tr>
+<tr class="separator:a5405e3de5bf8abbbc9b97e2d8025d9b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+变量</h2></td></tr>
+<tr class="memitem:a65835679be5eda42dbee83ae2917cc29" id="r_a65835679be5eda42dbee83ae2917cc29"><td class="memItemLeft" align="right" valign="top">__IO uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a65835679be5eda42dbee83ae2917cc29">time_count</a></td></tr>
+<tr class="separator:a65835679be5eda42dbee83ae2917cc29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a210c076147232d20bdbee43fb2009dab" id="r_a210c076147232d20bdbee43fb2009dab"><td class="memItemLeft" align="right" valign="top">__IO uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a210c076147232d20bdbee43fb2009dab">time</a></td></tr>
+<tr class="separator:a210c076147232d20bdbee43fb2009dab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09eaaeb880d4b6114a92facad76c76b8" id="r_a09eaaeb880d4b6114a92facad76c76b8"><td class="memItemLeft" align="right" valign="top">__IO uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a09eaaeb880d4b6114a92facad76c76b8">sec</a></td></tr>
+<tr class="separator:a09eaaeb880d4b6114a92facad76c76b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9bbf88b3f57aa549e5d2e63b192b991d" id="r_a9bbf88b3f57aa549e5d2e63b192b991d"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9bbf88b3f57aa549e5d2e63b192b991d">data</a> [9]</td></tr>
+<tr class="separator:a9bbf88b3f57aa549e5d2e63b192b991d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa5c0bb3e35be721785145da888240c7" id="r_afa5c0bb3e35be721785145da888240c7"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afa5c0bb3e35be721785145da888240c7">Usart_Head</a></td></tr>
+<tr class="separator:afa5c0bb3e35be721785145da888240c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22d090b2d6f5c1a361db820b88ab6511" id="r_a22d090b2d6f5c1a361db820b88ab6511"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a22d090b2d6f5c1a361db820b88ab6511">CRC16</a></td></tr>
+<tr class="separator:a22d090b2d6f5c1a361db820b88ab6511"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08ff4ddbad3d9983a08576cbba5bae7d" id="r_a08ff4ddbad3d9983a08576cbba5bae7d"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a08ff4ddbad3d9983a08576cbba5bae7d">Data_Flag</a> = 0</td></tr>
+<tr class="memdesc:a08ff4ddbad3d9983a08576cbba5bae7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">数据有效标志  <br /></td></tr>
+<tr class="separator:a08ff4ddbad3d9983a08576cbba5bae7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46c0f5272e4ef30f8072eb3dd8e12166" id="r_a46c0f5272e4ef30f8072eb3dd8e12166"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a46c0f5272e4ef30f8072eb3dd8e12166">Usart_Flag</a> = 0</td></tr>
+<tr class="memdesc:a46c0f5272e4ef30f8072eb3dd8e12166"><td class="mdescLeft">&#160;</td><td class="mdescRight">接收状态标志  <br /></td></tr>
+<tr class="separator:a46c0f5272e4ef30f8072eb3dd8e12166"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab934a37fac836a8e8e708b3a11ff4730" id="r_ab934a37fac836a8e8e708b3a11ff4730"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_remote__control.html">Remote_control</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab934a37fac836a8e8e708b3a11ff4730">control</a></td></tr>
+<tr class="separator:ab934a37fac836a8e8e708b3a11ff4730"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9bdb8d0f6b7a3a08bf5162ed3cfc4789" id="r_a9bdb8d0f6b7a3a08bf5162ed3cfc4789"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_chassis__t.html">Chassis_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9bdb8d0f6b7a3a08bf5162ed3cfc4789">chassis</a></td></tr>
+<tr class="separator:a9bdb8d0f6b7a3a08bf5162ed3cfc4789"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>底盘运动控制 </p>
+<dl class="section author"><dt>作者</dt><dd>早上坏 (<a href="#" onclick="location.href='mai'+'lto:'+'sta'+'r3'+'234'+'9@'+'out'+'lo'+'ok.'+'co'+'m'; return false;">star3<span class="obfuscator">.nosp@m.</span>2349<span class="obfuscator">.nosp@m.</span>@outl<span class="obfuscator">.nosp@m.</span>ook.<span class="obfuscator">.nosp@m.</span>com</a>) </dd></dl>
+<dl class="section version"><dt>版本</dt><dd>1.0 </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2024-10-01</dd></dl>
+<dl class="section copyright"><dt>版权所有</dt><dd>Copyright (c) 2024</dd></dl>
+<dl class="section user"><dt>修改日志:</dt><dd><table class="doxtable">
+<tr>
+<th>日期 </th><th>版本 </th><th>作者 </th><th>描述 </th></tr>
+<tr>
+<td>22024-10-01 </td><td>1.0 </td><td>早上坏 </td><td>初始版本 </td></tr>
+</table>
+</dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_chassis_8c_source.html">Chassis.c</a> 中定义.</p>
+</div><h2 class="groupheader">宏定义说明</h2>
+<a id="a6c8de73bb604d91743c7f6f356eb171e" name="a6c8de73bb604d91743c7f6f356eb171e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c8de73bb604d91743c7f6f356eb171e">&#9670;&#160;</a></span>DIR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DIR&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>旋转方向，编号小的PWM输入引脚高电平时，顺时针旋转为1，逆时针为-1 </p>
+
+<p class="definition">在文件 <a class="el" href="_chassis_8c_source.html">Chassis.c</a> 第 <a class="el" href="_chassis_8c_source.html#l00044">44</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a87136345a801595323e8b06298c1c70b" name="a87136345a801595323e8b06298c1c70b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87136345a801595323e8b06298c1c70b">&#9670;&#160;</a></span>Limit_Max</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define Limit_Max</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>value</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>Max</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">    {                          \</div>
+<div class="line">        if (value &gt; Max)       \</div>
+<div class="line">            value = Max;       \</div>
+<div class="line">        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (value &lt; -Max) \</div>
+<div class="line">            value = -Max;      \</div>
+<div class="line">    }</div>
+</div><!-- fragment -->
+<p>最大值限制 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>要限制的值 </td></tr>
+    <tr><td class="paramname">Max</td><td>限制的最大值 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">值范围[-Max,Max]</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_chassis_8c_source.html">Chassis.c</a> 第 <a class="el" href="_chassis_8c_source.html#l00072">72</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ab9f22010302f7726dcc3eb38c2320222" name="ab9f22010302f7726dcc3eb38c2320222"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9f22010302f7726dcc3eb38c2320222">&#9670;&#160;</a></span>Limit_Min</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define Limit_Min</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>value</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>Min</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">    {                                      \</div>
+<div class="line">        if (value &lt;= Min &amp;&amp; value &gt;= -Min) \</div>
+<div class="line">            value = 0;                     \</div>
+<div class="line">    }</div>
+</div><!-- fragment -->
+<p>最小值限制 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>要限制的值 </td></tr>
+    <tr><td class="paramname">Min</td><td>限制的最小值 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">值范围[-Min,Min]</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_chassis_8c_source.html">Chassis.c</a> 第 <a class="el" href="_chassis_8c_source.html#l00085">85</a> 行定义.</p>
+
+</div>
+</div>
+<a id="adc6615200a1e6e1a71179386a8864c00" name="adc6615200a1e6e1a71179386a8864c00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc6615200a1e6e1a71179386a8864c00">&#9670;&#160;</a></span>Pulse_Num</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define Pulse_Num&#160;&#160;&#160;390.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>旋转一圈编码器输出的脉冲数 </p>
+
+<p class="definition">在文件 <a class="el" href="_chassis_8c_source.html">Chassis.c</a> 第 <a class="el" href="_chassis_8c_source.html#l00043">43</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a0097b53639a233231fc3dd7945dee88c" name="a0097b53639a233231fc3dd7945dee88c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0097b53639a233231fc3dd7945dee88c">&#9670;&#160;</a></span>Speed_Factor</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define Speed_Factor&#160;&#160;&#160;0.001f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>速度系数 </p>
+
+<p class="definition">在文件 <a class="el" href="_chassis_8c_source.html">Chassis.c</a> 第 <a class="el" href="_chassis_8c_source.html#l00042">42</a> 行定义.</p>
+
+</div>
+</div>
+<a id="acbcbdcfb463c5497a9a3999b2dacc046" name="acbcbdcfb463c5497a9a3999b2dacc046"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acbcbdcfb463c5497a9a3999b2dacc046">&#9670;&#160;</a></span>Wheel_Diameter</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define Wheel_Diameter&#160;&#160;&#160;0.06f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>轮子直径，单位m </p>
+
+<p class="definition">在文件 <a class="el" href="_chassis_8c_source.html">Chassis.c</a> 第 <a class="el" href="_chassis_8c_source.html#l00041">41</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">函数说明</h2>
+<a id="a3a2fa8dcfd5f1943e705549f96c76739" name="a3a2fa8dcfd5f1943e705549f96c76739"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a2fa8dcfd5f1943e705549f96c76739">&#9670;&#160;</a></span>Chassis_Task()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Chassis_Task </td>
+          <td>(</td>
+          <td class="paramtype">void const *</td>          <td class="paramname"><span class="paramname"><em>argument</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>底盘FreeRTOS任务 </p>
+<p>&lt; 缓冲，防止计算时数值变化</p>
+
+<p class="definition">在文件 <a class="el" href="_chassis_8c_source.html">Chassis.c</a> 第 <a class="el" href="_chassis_8c_source.html#l00093">93</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a5405e3de5bf8abbbc9b97e2d8025d9b5" name="a5405e3de5bf8abbbc9b97e2d8025d9b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5405e3de5bf8abbbc9b97e2d8025d9b5">&#9670;&#160;</a></span>Chassis_UART_RxCpltCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Chassis_UART_RxCpltCallback </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>底盘串口回调函数 </p>
+<dl class="section note"><dt>注解</dt><dd>串口接收底盘运动控制信息 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_chassis_8c_source.html">Chassis.c</a> 第 <a class="el" href="_chassis_8c_source.html#l00328">328</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a0cd91fd3a9608559c2a87a8ba6cba55f" name="a0cd91fd3a9608559c2a87a8ba6cba55f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0cd91fd3a9608559c2a87a8ba6cba55f">&#9670;&#160;</a></span>HAL_GPIO_EXTI_Callback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HAL_GPIO_EXTI_Callback </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>GPIO_Pin</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>GPIO中断回调函数 </p>
+<dl class="section note"><dt>注解</dt><dd>A相触发中断，B相判断方向，函数用于计算电机速度</dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">GPIO_Pin</td><td>GPIO引脚号 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_chassis_8c_source.html">Chassis.c</a> 第 <a class="el" href="_chassis_8c_source.html#l00186">186</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a8a3b0ad512a6e6c6157440b68d395eac" name="a8a3b0ad512a6e6c6157440b68d395eac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a3b0ad512a6e6c6157440b68d395eac">&#9670;&#160;</a></span>HAL_TIM_PeriodElapsedCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HAL_TIM_PeriodElapsedCallback </td>
+          <td>(</td>
+          <td class="paramtype">TIM_HandleTypeDef *</td>          <td class="paramname"><span class="paramname"><em>htim</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>定时器中断回调函数 </p>
+<dl class="section note"><dt>注解</dt><dd>TIM4定时时间1ms </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_chassis_8c_source.html">Chassis.c</a> 第 <a class="el" href="_chassis_8c_source.html#l00163">163</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a48a3c4273e4c8e998aa80eb90170a51d" name="a48a3c4273e4c8e998aa80eb90170a51d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48a3c4273e4c8e998aa80eb90170a51d">&#9670;&#160;</a></span>Motor_PWM()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Motor_PWM </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置占空比，控制电机旋转 </p>
+
+<p class="definition">在文件 <a class="el" href="_chassis_8c_source.html">Chassis.c</a> 第 <a class="el" href="_chassis_8c_source.html#l00237">237</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a743d09a664ce05032a94ab58ecb12935" name="a743d09a664ce05032a94ab58ecb12935"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a743d09a664ce05032a94ab58ecb12935">&#9670;&#160;</a></span>Motor_Speed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Motor_Speed </td>
+          <td>(</td>
+          <td class="paramtype">int16_t</td>          <td class="paramname"><span class="paramname"><em>vx</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int16_t</td>          <td class="paramname"><span class="paramname"><em>vy</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int16_t</td>          <td class="paramname"><span class="paramname"><em>RotateV</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>计算设置速度 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vx</td><td>X轴方向速度 </td></tr>
+    <tr><td class="paramname">vy</td><td>Y轴方向速度 </td></tr>
+    <tr><td class="paramname">RotateV</td><td>旋转速度，顺时针为负值，逆时针为正值 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_chassis_8c_source.html">Chassis.c</a> 第 <a class="el" href="_chassis_8c_source.html#l00307">307</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ae2f52bef32af3cebd75343365c866ed2" name="ae2f52bef32af3cebd75343365c866ed2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2f52bef32af3cebd75343365c866ed2">&#9670;&#160;</a></span>PWM_Init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PWM_Init </td>
+          <td>(</td>
+          <td class="paramtype">TIM_HandleTypeDef *</td>          <td class="paramname"><span class="paramname"><em>timHandle</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>启动定时器PWM输出 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">timHandle</td><td>定时器句柄 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_chassis_8c_source.html">Chassis.c</a> 第 <a class="el" href="_chassis_8c_source.html#l00226">226</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">变量说明</h2>
+<a id="a9bdb8d0f6b7a3a08bf5162ed3cfc4789" name="a9bdb8d0f6b7a3a08bf5162ed3cfc4789"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9bdb8d0f6b7a3a08bf5162ed3cfc4789">&#9670;&#160;</a></span>chassis</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_chassis__t.html">Chassis_t</a> chassis</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>底盘数据 </p>
+
+<p class="definition">在文件 <a class="el" href="_chassis_8c_source.html">Chassis.c</a> 第 <a class="el" href="_chassis_8c_source.html#l00065">65</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ab934a37fac836a8e8e708b3a11ff4730" name="ab934a37fac836a8e8e708b3a11ff4730"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab934a37fac836a8e8e708b3a11ff4730">&#9670;&#160;</a></span>control</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_remote__control.html">Remote_control</a> control</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>控制数据 </p>
+
+<p class="definition">在文件 <a class="el" href="_chassis_8c_source.html">Chassis.c</a> 第 <a class="el" href="_chassis_8c_source.html#l00064">64</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a22d090b2d6f5c1a361db820b88ab6511" name="a22d090b2d6f5c1a361db820b88ab6511"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22d090b2d6f5c1a361db820b88ab6511">&#9670;&#160;</a></span>CRC16</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t CRC16</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_chassis_8c_source.html">Chassis.c</a> 第 <a class="el" href="_chassis_8c_source.html#l00048">48</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a9bbf88b3f57aa549e5d2e63b192b991d" name="a9bbf88b3f57aa549e5d2e63b192b991d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9bbf88b3f57aa549e5d2e63b192b991d">&#9670;&#160;</a></span>data</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t data[9]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_chassis_8c_source.html">Chassis.c</a> 第 <a class="el" href="_chassis_8c_source.html#l00046">46</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a08ff4ddbad3d9983a08576cbba5bae7d" name="a08ff4ddbad3d9983a08576cbba5bae7d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08ff4ddbad3d9983a08576cbba5bae7d">&#9670;&#160;</a></span>Data_Flag</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Data_Flag = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>数据有效标志 </p>
+<dl class="section note"><dt>注解</dt><dd><ul>
+<li>value = 0：数据有效</li>
+<li>value = 1：数据CRC校验错误</li>
+<li>value = 2：未接收到帧尾 </li>
+</ul>
+</dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_chassis_8c_source.html">Chassis.c</a> 第 <a class="el" href="_chassis_8c_source.html#l00056">56</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a09eaaeb880d4b6114a92facad76c76b8" name="a09eaaeb880d4b6114a92facad76c76b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09eaaeb880d4b6114a92facad76c76b8">&#9670;&#160;</a></span>sec</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">__IO uint16_t sec</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_chassis_8c_source.html">Chassis.c</a> 第 <a class="el" href="_chassis_8c_source.html#l00045">45</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a210c076147232d20bdbee43fb2009dab" name="a210c076147232d20bdbee43fb2009dab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a210c076147232d20bdbee43fb2009dab">&#9670;&#160;</a></span>time</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">__IO uint16_t time</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_chassis_8c_source.html">Chassis.c</a> 第 <a class="el" href="_chassis_8c_source.html#l00045">45</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a65835679be5eda42dbee83ae2917cc29" name="a65835679be5eda42dbee83ae2917cc29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65835679be5eda42dbee83ae2917cc29">&#9670;&#160;</a></span>time_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">__IO uint16_t time_count</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_chassis_8c_source.html">Chassis.c</a> 第 <a class="el" href="_chassis_8c_source.html#l00045">45</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a46c0f5272e4ef30f8072eb3dd8e12166" name="a46c0f5272e4ef30f8072eb3dd8e12166"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46c0f5272e4ef30f8072eb3dd8e12166">&#9670;&#160;</a></span>Usart_Flag</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Usart_Flag = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>接收状态标志 </p>
+<dl class="section note"><dt>注解</dt><dd><ul>
+<li>value = 0：等待帧头</li>
+<li>value = 1：已接收到帧头，开始接收剩下的数据 </li>
+</ul>
+</dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_chassis_8c_source.html">Chassis.c</a> 第 <a class="el" href="_chassis_8c_source.html#l00063">63</a> 行定义.</p>
+
+</div>
+</div>
+<a id="afa5c0bb3e35be721785145da888240c7" name="afa5c0bb3e35be721785145da888240c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa5c0bb3e35be721785145da888240c7">&#9670;&#160;</a></span>Usart_Head</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Usart_Head</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_chassis_8c_source.html">Chassis.c</a> 第 <a class="el" href="_chassis_8c_source.html#l00047">47</a> 行定义.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

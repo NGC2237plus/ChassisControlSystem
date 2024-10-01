@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>智能车底盘控制: Chassis.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">智能车底盘控制<span id="projectnumber">&#160;2.0</span>
+   </div>
+   <div id="projectbrief">智能车底盘控制程序，根据串口数据控制移动</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="doc-content">
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Chassis.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_chassis_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * @file Chassis.h</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> * @author 早上坏 (star32349@outlook.com)</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * @brief</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * @version 1.0</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> * @date 2024-10-01</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> * @copyright Copyright (c) 2024</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#ifndef __CHASSIS_H</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#define __CHASSIS_H</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;stm32f4xx_hal.h&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;tim.h&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;main.h&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;math.h&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;usart.h&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;<a class="code" href="_w_t901_c_8h.html">WT901C.h</a>&quot;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;<a class="code" href="_p_i_d_8h.html">pid.h</a>&quot;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &quot;<a class="code" href="_c_r_c_8h.html">CRC.h</a>&quot;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="_chassis_8h.html#aa7afdffed2a45db3a5e01397934c9bc8">   21</a></span><span class="preprocessor">#define Motor_PI 3.14159265358979323846f </span><span class="comment">/*!&lt; 圆周率 */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="_chassis_8h.html#a8e33b152a5a7943dc04a9e3768244af9">   23</a></span><span class="preprocessor">#define Motor1_PWM_H htim2.Instance-&gt;CCR1 </span><span class="comment">/*!&lt; 定时器2 PWM通道1 */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="_chassis_8h.html#a02d8c63c8174e30d050a95f3a8d3a75c">   24</a></span><span class="preprocessor">#define Motor1_PWM_L htim2.Instance-&gt;CCR2 </span><span class="comment">/*!&lt; 定时器2 PWM通道2 */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="_chassis_8h.html#a7215febb4d7c8eb60ea8cb174b71b3e4">   26</a></span><span class="preprocessor">#define Motor2_PWM_H htim2.Instance-&gt;CCR3 </span><span class="comment">/*!&lt; 定时器2 PWM通道3 */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="_chassis_8h.html#a7e12ce81dafbc250c2dccae2af49ef7f">   27</a></span><span class="preprocessor">#define Motor2_PWM_L htim2.Instance-&gt;CCR4 </span><span class="comment">/*!&lt; 定时器2 PWM通道4 */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="_chassis_8h.html#a2f1489f6d327a292247fdd6730eb59c3">   29</a></span><span class="preprocessor">#define Motor3_PWM_H htim3.Instance-&gt;CCR1 </span><span class="comment">/*!&lt; 定时器3 PWM通道1 */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="_chassis_8h.html#acf04169d89a48372009a8825b9d8f637">   30</a></span><span class="preprocessor">#define Motor3_PWM_L htim3.Instance-&gt;CCR2 </span><span class="comment">/*!&lt; 定时器3 PWM通道2 */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="_chassis_8h.html#a87256c75fb14ff891775764afc59574f">   32</a></span><span class="preprocessor">#define Motor4_PWM_H htim3.Instance-&gt;CCR3 </span><span class="comment">/*!&lt; 定时器3 PWM通道3 */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="_chassis_8h.html#a14b395dc93940dfa82d802f9a4791825">   33</a></span><span class="preprocessor">#define Motor4_PWM_L htim3.Instance-&gt;CCR4 </span><span class="comment">/*!&lt; 定时器3 PWM通道4 */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="_chassis_8h.html#a40eb7e7eb4f175d33726af6181acb4a7">   35</a></span><span class="preprocessor">#define Packet_Head 0x05 </span><span class="comment">/*!&lt; 帧头 */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="_chassis_8h.html#a49bc40e37b6f804664d7e30d884189a2">   36</a></span><span class="preprocessor">#define Packet_End 0x22  </span><span class="comment">/*!&lt; 帧尾 */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="_chassis_8h.html#a87308f2f15d9703dd9236408481a4491">   37</a></span><span class="preprocessor">#define MaxSpeed 1000    </span><span class="comment">/*!&lt; 速度最大值 */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="_chassis_8h.html#a41b70f29b467f0ff487fce012072d789">   38</a></span><span class="preprocessor">#define MinSpeed 100     </span><span class="comment">/*!&lt; 速度最小值 */</span><span class="preprocessor"></span><span class="comment"></span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment"> * @struct Remote_control</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment"> * @brief 控制数据结构体</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment"> */</span><span class="preprocessor"></span></div>
+<div class="foldopen" id="foldopen00044" data-start="{" data-end="};">
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="struct_remote__control.html">   44</a></span><span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>{</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    int16_t Vx;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    int16_t Vy;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    int16_t Vz;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>} <a class="code hl_struct" href="struct_remote__control.html">Remote_control</a>;<span class="comment"></span></div>
+</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment"> * @struct Motor_t</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment"> * @brief 电机结构体</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment"> */</span></div>
+<div class="foldopen" id="foldopen00055" data-start="{" data-end="};">
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="struct_motor__t.html">   55</a></span><span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>{</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="struct_motor__t.html#a83a50f825d5363c6d962fff7d1d1639a">   57</a></span>    int16_t <a class="code hl_variable" href="struct_motor__t.html#a83a50f825d5363c6d962fff7d1d1639a">Set_speed</a>;          <span class="comment">/*!&lt; 设置速度 */</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="struct_motor__t.html#a9a94a870886147e8a8fd4a076e11f269">   58</a></span>    __IO uint16_t <a class="code hl_variable" href="struct_motor__t.html#a9a94a870886147e8a8fd4a076e11f269">Encode_Count</a>; <span class="comment">/*!&lt; 编码器计数 */</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="struct_motor__t.html#a0025f170b33e059b6820fd9f56367ea3">   59</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="struct_motor__t.html#a0025f170b33e059b6820fd9f56367ea3">rps</a>;                  <span class="comment">/*!&lt; 转速n/s */</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="struct_motor__t.html#a7f7e4724cf57d59513b39c5ecc81adc8">   60</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="struct_motor__t.html#a7f7e4724cf57d59513b39c5ecc81adc8">speed</a>;                <span class="comment">/*!&lt; 速度m/s */</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="struct_motor__t.html#a674c5e9d29d1d5591b3a03924a972ed5">   61</a></span>    int8_t <a class="code hl_variable" href="struct_motor__t.html#a674c5e9d29d1d5591b3a03924a972ed5">dir</a>;                 <span class="comment">/*!&lt; 电机旋转方向 */</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="struct_motor__t.html#aca630e36cacbf30c1feff03dbb79289c">   62</a></span>    <a class="code hl_struct" href="struct_p_i_d___type_def.html">PID_TypeDef</a> <a class="code hl_variable" href="struct_motor__t.html#aca630e36cacbf30c1feff03dbb79289c">pid</a>;            <span class="comment">/*!&lt; pid速度环 */</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>} <a class="code hl_struct" href="struct_motor__t.html">Motor_t</a>;<span class="comment"></span></div>
+</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="comment"> * @struct Chassis_t</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="comment"> * @brief 底盘数据结构体</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="comment"> */</span></div>
+<div class="foldopen" id="foldopen00069" data-start="{" data-end="};">
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="struct_chassis__t.html">   69</a></span><span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>{</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <a class="code hl_struct" href="struct_motor__t.html">Motor_t</a> Motor1;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <a class="code hl_struct" href="struct_motor__t.html">Motor_t</a> Motor2;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <a class="code hl_struct" href="struct_motor__t.html">Motor_t</a> Motor3;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <a class="code hl_struct" href="struct_motor__t.html">Motor_t</a> Motor4;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="struct_chassis__t.html#a01fec9758f20bbcda460c52ac752ac70">   75</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="struct_chassis__t.html#a01fec9758f20bbcda460c52ac752ac70">set_angle</a>;       <span class="comment">/*!&lt; 设定角度 */</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="struct_chassis__t.html#ae2ba7e574dd3ca9178295bfac0f543c9">   76</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="struct_chassis__t.html#ae2ba7e574dd3ca9178295bfac0f543c9">real_angle</a>;      <span class="comment">/*!&lt; 实际角度 */</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="struct_chassis__t.html#a82270a1d756f9d79952eeadec355422a">   77</a></span>    <a class="code hl_struct" href="struct_p_i_d___type_def.html">PID_TypeDef</a> <a class="code hl_variable" href="struct_chassis__t.html#a82270a1d756f9d79952eeadec355422a">Angle_pid</a>; <span class="comment">/*!&lt; pid角度环 */</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>} <a class="code hl_struct" href="struct_chassis__t.html">Chassis_t</a>;</div>
+</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="keyword">extern</span> <a class="code hl_struct" href="struct_remote__control.html">Remote_control</a> <a class="code hl_variable" href="_chassis_8h.html#ab934a37fac836a8e8e708b3a11ff4730">control</a>;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="keyword">extern</span> uint8_t Usart_Head;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="keyword">extern</span> <a class="code hl_struct" href="struct_chassis__t.html">Chassis_t</a> <a class="code hl_variable" href="_chassis_8h.html#a9bdb8d0f6b7a3a08bf5162ed3cfc4789">chassis</a>;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="keywordtype">void</span> <a class="code hl_function" href="_chassis_8h.html#ae2f52bef32af3cebd75343365c866ed2">PWM_Init</a>(TIM_HandleTypeDef *timHandle);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="keywordtype">void</span> <a class="code hl_function" href="_chassis_8h.html#a48a3c4273e4c8e998aa80eb90170a51d">Motor_PWM</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="keywordtype">void</span> <a class="code hl_function" href="_chassis_8h.html#a743d09a664ce05032a94ab58ecb12935">Motor_Speed</a>(int16_t vx, int16_t vy, int16_t RotateV);</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="keywordtype">void</span> <a class="code hl_function" href="_chassis_8h.html#a5405e3de5bf8abbbc9b97e2d8025d9b5">Chassis_UART_RxCpltCallback</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="a_c_r_c_8h_html"><div class="ttname"><a href="_c_r_c_8h.html">CRC.h</a></div></div>
+<div class="ttc" id="a_chassis_8h_html_a48a3c4273e4c8e998aa80eb90170a51d"><div class="ttname"><a href="_chassis_8h.html#a48a3c4273e4c8e998aa80eb90170a51d">Motor_PWM</a></div><div class="ttdeci">void Motor_PWM(void)</div><div class="ttdoc">设置占空比，控制电机旋转</div><div class="ttdef"><b>定义</b> <a href="_chassis_8c_source.html#l00237">Chassis.c:237</a></div></div>
+<div class="ttc" id="a_chassis_8h_html_a5405e3de5bf8abbbc9b97e2d8025d9b5"><div class="ttname"><a href="_chassis_8h.html#a5405e3de5bf8abbbc9b97e2d8025d9b5">Chassis_UART_RxCpltCallback</a></div><div class="ttdeci">void Chassis_UART_RxCpltCallback(void)</div><div class="ttdoc">底盘串口回调函数</div><div class="ttdef"><b>定义</b> <a href="_chassis_8c_source.html#l00328">Chassis.c:328</a></div></div>
+<div class="ttc" id="a_chassis_8h_html_a743d09a664ce05032a94ab58ecb12935"><div class="ttname"><a href="_chassis_8h.html#a743d09a664ce05032a94ab58ecb12935">Motor_Speed</a></div><div class="ttdeci">void Motor_Speed(int16_t vx, int16_t vy, int16_t RotateV)</div><div class="ttdoc">计算设置速度</div><div class="ttdef"><b>定义</b> <a href="_chassis_8c_source.html#l00307">Chassis.c:307</a></div></div>
+<div class="ttc" id="a_chassis_8h_html_a9bdb8d0f6b7a3a08bf5162ed3cfc4789"><div class="ttname"><a href="_chassis_8h.html#a9bdb8d0f6b7a3a08bf5162ed3cfc4789">chassis</a></div><div class="ttdeci">Chassis_t chassis</div><div class="ttdef"><b>定义</b> <a href="_chassis_8c_source.html#l00065">Chassis.c:65</a></div></div>
+<div class="ttc" id="a_chassis_8h_html_ab934a37fac836a8e8e708b3a11ff4730"><div class="ttname"><a href="_chassis_8h.html#ab934a37fac836a8e8e708b3a11ff4730">control</a></div><div class="ttdeci">Remote_control control</div><div class="ttdef"><b>定义</b> <a href="_chassis_8c_source.html#l00064">Chassis.c:64</a></div></div>
+<div class="ttc" id="a_chassis_8h_html_ae2f52bef32af3cebd75343365c866ed2"><div class="ttname"><a href="_chassis_8h.html#ae2f52bef32af3cebd75343365c866ed2">PWM_Init</a></div><div class="ttdeci">void PWM_Init(TIM_HandleTypeDef *timHandle)</div><div class="ttdoc">启动定时器PWM输出</div><div class="ttdef"><b>定义</b> <a href="_chassis_8c_source.html#l00226">Chassis.c:226</a></div></div>
+<div class="ttc" id="a_p_i_d_8h_html"><div class="ttname"><a href="_p_i_d_8h.html">PID.h</a></div></div>
+<div class="ttc" id="a_w_t901_c_8h_html"><div class="ttname"><a href="_w_t901_c_8h.html">WT901C.h</a></div></div>
+<div class="ttc" id="astruct_chassis__t_html"><div class="ttname"><a href="struct_chassis__t.html">Chassis_t</a></div><div class="ttdoc">底盘数据结构体</div><div class="ttdef"><b>定义</b> <a href="#l00069">Chassis.h:70</a></div></div>
+<div class="ttc" id="astruct_chassis__t_html_a01fec9758f20bbcda460c52ac752ac70"><div class="ttname"><a href="struct_chassis__t.html#a01fec9758f20bbcda460c52ac752ac70">Chassis_t::set_angle</a></div><div class="ttdeci">float set_angle</div><div class="ttdef"><b>定义</b> <a href="#l00075">Chassis.h:75</a></div></div>
+<div class="ttc" id="astruct_chassis__t_html_a82270a1d756f9d79952eeadec355422a"><div class="ttname"><a href="struct_chassis__t.html#a82270a1d756f9d79952eeadec355422a">Chassis_t::Angle_pid</a></div><div class="ttdeci">PID_TypeDef Angle_pid</div><div class="ttdef"><b>定义</b> <a href="#l00077">Chassis.h:77</a></div></div>
+<div class="ttc" id="astruct_chassis__t_html_ae2ba7e574dd3ca9178295bfac0f543c9"><div class="ttname"><a href="struct_chassis__t.html#ae2ba7e574dd3ca9178295bfac0f543c9">Chassis_t::real_angle</a></div><div class="ttdeci">float real_angle</div><div class="ttdef"><b>定义</b> <a href="#l00076">Chassis.h:76</a></div></div>
+<div class="ttc" id="astruct_motor__t_html"><div class="ttname"><a href="struct_motor__t.html">Motor_t</a></div><div class="ttdoc">电机结构体</div><div class="ttdef"><b>定义</b> <a href="#l00055">Chassis.h:56</a></div></div>
+<div class="ttc" id="astruct_motor__t_html_a0025f170b33e059b6820fd9f56367ea3"><div class="ttname"><a href="struct_motor__t.html#a0025f170b33e059b6820fd9f56367ea3">Motor_t::rps</a></div><div class="ttdeci">float rps</div><div class="ttdef"><b>定义</b> <a href="#l00059">Chassis.h:59</a></div></div>
+<div class="ttc" id="astruct_motor__t_html_a674c5e9d29d1d5591b3a03924a972ed5"><div class="ttname"><a href="struct_motor__t.html#a674c5e9d29d1d5591b3a03924a972ed5">Motor_t::dir</a></div><div class="ttdeci">int8_t dir</div><div class="ttdef"><b>定义</b> <a href="#l00061">Chassis.h:61</a></div></div>
+<div class="ttc" id="astruct_motor__t_html_a7f7e4724cf57d59513b39c5ecc81adc8"><div class="ttname"><a href="struct_motor__t.html#a7f7e4724cf57d59513b39c5ecc81adc8">Motor_t::speed</a></div><div class="ttdeci">float speed</div><div class="ttdef"><b>定义</b> <a href="#l00060">Chassis.h:60</a></div></div>
+<div class="ttc" id="astruct_motor__t_html_a83a50f825d5363c6d962fff7d1d1639a"><div class="ttname"><a href="struct_motor__t.html#a83a50f825d5363c6d962fff7d1d1639a">Motor_t::Set_speed</a></div><div class="ttdeci">int16_t Set_speed</div><div class="ttdef"><b>定义</b> <a href="#l00057">Chassis.h:57</a></div></div>
+<div class="ttc" id="astruct_motor__t_html_a9a94a870886147e8a8fd4a076e11f269"><div class="ttname"><a href="struct_motor__t.html#a9a94a870886147e8a8fd4a076e11f269">Motor_t::Encode_Count</a></div><div class="ttdeci">__IO uint16_t Encode_Count</div><div class="ttdef"><b>定义</b> <a href="#l00058">Chassis.h:58</a></div></div>
+<div class="ttc" id="astruct_motor__t_html_aca630e36cacbf30c1feff03dbb79289c"><div class="ttname"><a href="struct_motor__t.html#aca630e36cacbf30c1feff03dbb79289c">Motor_t::pid</a></div><div class="ttdeci">PID_TypeDef pid</div><div class="ttdef"><b>定义</b> <a href="#l00062">Chassis.h:62</a></div></div>
+<div class="ttc" id="astruct_p_i_d___type_def_html"><div class="ttname"><a href="struct_p_i_d___type_def.html">PID_TypeDef</a></div><div class="ttdoc">pid结构体</div><div class="ttdef"><b>定义</b> <a href="_p_i_d_8h_source.html#l00022">PID.h:23</a></div></div>
+<div class="ttc" id="astruct_remote__control_html"><div class="ttname"><a href="struct_remote__control.html">Remote_control</a></div><div class="ttdoc">控制数据结构体</div><div class="ttdef"><b>定义</b> <a href="#l00044">Chassis.h:45</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

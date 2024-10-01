@@ -1,0 +1,297 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>智能车底盘控制: PID.c 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">智能车底盘控制<span id="projectnumber">&#160;2.0</span>
+   </div>
+   <div id="projectbrief">智能车底盘控制程序，根据串口数据控制移动</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle"><div class="title">PID.c 文件参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>PID算法板级支持包  
+<a href="#details">更多...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="_p_i_d_8h_source.html">pid.h</a>&quot;</code><br />
+</div>
+<p><a href="_p_i_d_8c_source.html">浏览该文件的源代码.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:ab4b1321062ab7deb08c01388a7ae7b01" id="r_ab4b1321062ab7deb08c01388a7ae7b01"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab4b1321062ab7deb08c01388a7ae7b01">PID_Init</a> (<a class="el" href="struct_p_i_d___type_def.html">PID_TypeDef</a> *pid, float p, float i, float d, float maxKI, float maxOut)</td></tr>
+<tr class="memdesc:ab4b1321062ab7deb08c01388a7ae7b01"><td class="mdescLeft">&#160;</td><td class="mdescRight">PID参数初始化  <br /></td></tr>
+<tr class="separator:ab4b1321062ab7deb08c01388a7ae7b01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6334b274b680c1ce59db0b27017ffeca" id="r_a6334b274b680c1ce59db0b27017ffeca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6334b274b680c1ce59db0b27017ffeca">PID_Calc</a> (<a class="el" href="struct_p_i_d___type_def.html">PID_TypeDef</a> *pid, float SetValue, float FeedBack)</td></tr>
+<tr class="memdesc:a6334b274b680c1ce59db0b27017ffeca"><td class="mdescLeft">&#160;</td><td class="mdescRight">位置式pid计算  <br /></td></tr>
+<tr class="separator:a6334b274b680c1ce59db0b27017ffeca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecde1dca84051925a478e79f8170ca3d" id="r_aecde1dca84051925a478e79f8170ca3d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aecde1dca84051925a478e79f8170ca3d">PID_Add_Calc</a> (<a class="el" href="struct_p_i_d___type_def.html">PID_TypeDef</a> *pid, float SetValue, float FeedBack)</td></tr>
+<tr class="memdesc:aecde1dca84051925a478e79f8170ca3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">增量式pid计算  <br /></td></tr>
+<tr class="separator:aecde1dca84051925a478e79f8170ca3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34fd23b1b17f23e6b29ce930b5a0a37f" id="r_a34fd23b1b17f23e6b29ce930b5a0a37f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a34fd23b1b17f23e6b29ce930b5a0a37f">PID_clear</a> (<a class="el" href="struct_p_i_d___type_def.html">PID_TypeDef</a> *pid)</td></tr>
+<tr class="memdesc:a34fd23b1b17f23e6b29ce930b5a0a37f"><td class="mdescLeft">&#160;</td><td class="mdescRight">清空pid，除参数外赋值为0  <br /></td></tr>
+<tr class="separator:a34fd23b1b17f23e6b29ce930b5a0a37f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>PID算法板级支持包 </p>
+<dl class="section author"><dt>作者</dt><dd>早上坏 (<a href="#" onclick="location.href='mai'+'lto:'+'sta'+'r3'+'234'+'9@'+'out'+'lo'+'ok.'+'co'+'m'; return false;">star3<span class="obfuscator">.nosp@m.</span>2349<span class="obfuscator">.nosp@m.</span>@outl<span class="obfuscator">.nosp@m.</span>ook.<span class="obfuscator">.nosp@m.</span>com</a>) </dd></dl>
+<dl class="section version"><dt>版本</dt><dd>1.0 </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2024-10-01</dd></dl>
+<dl class="section copyright"><dt>版权所有</dt><dd>Copyright (c) 2024</dd></dl>
+<dl class="section user"><dt>修改日志:</dt><dd><table class="doxtable">
+<tr>
+<th>日期 </th><th>版本 </th><th>作者 </th><th>描述 </th></tr>
+<tr>
+<td>22024-10-01 </td><td>1.0 </td><td>早上坏 </td><td>初始版本 </td></tr>
+</table>
+</dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_p_i_d_8c_source.html">PID.c</a> 中定义.</p>
+</div><h2 class="groupheader">函数说明</h2>
+<a id="aecde1dca84051925a478e79f8170ca3d" name="aecde1dca84051925a478e79f8170ca3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aecde1dca84051925a478e79f8170ca3d">&#9670;&#160;</a></span>PID_Add_Calc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PID_Add_Calc </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_p_i_d___type_def.html">PID_TypeDef</a> *</td>          <td class="paramname"><span class="paramname"><em>pid</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>SetValue</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>FeedBack</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>增量式pid计算 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pid</td><td>pid结构体指针 </td></tr>
+    <tr><td class="paramname">SetValue</td><td>设置值 </td></tr>
+    <tr><td class="paramname">FeedBack</td><td>实际值 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_p_i_d_8c_source.html">PID.c</a> 第 <a class="el" href="_p_i_d_8c_source.html#l00071">71</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a6334b274b680c1ce59db0b27017ffeca" name="a6334b274b680c1ce59db0b27017ffeca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6334b274b680c1ce59db0b27017ffeca">&#9670;&#160;</a></span>PID_Calc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PID_Calc </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_p_i_d___type_def.html">PID_TypeDef</a> *</td>          <td class="paramname"><span class="paramname"><em>pid</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>SetValue</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>FeedBack</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>位置式pid计算 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pid</td><td>pid结构体指针 </td></tr>
+    <tr><td class="paramname">SetValue</td><td>设置值 </td></tr>
+    <tr><td class="paramname">FeedBack</td><td>实际值 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_p_i_d_8c_source.html">PID.c</a> 第 <a class="el" href="_p_i_d_8c_source.html#l00043">43</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a34fd23b1b17f23e6b29ce930b5a0a37f" name="a34fd23b1b17f23e6b29ce930b5a0a37f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34fd23b1b17f23e6b29ce930b5a0a37f">&#9670;&#160;</a></span>PID_clear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PID_clear </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_p_i_d___type_def.html">PID_TypeDef</a> *</td>          <td class="paramname"><span class="paramname"><em>pid</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>清空pid，除参数外赋值为0 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pid</td><td>pid结构体指针 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_p_i_d_8c_source.html">PID.c</a> 第 <a class="el" href="_p_i_d_8c_source.html#l00098">98</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ab4b1321062ab7deb08c01388a7ae7b01" name="ab4b1321062ab7deb08c01388a7ae7b01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4b1321062ab7deb08c01388a7ae7b01">&#9670;&#160;</a></span>PID_Init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PID_Init </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_p_i_d___type_def.html">PID_TypeDef</a> *</td>          <td class="paramname"><span class="paramname"><em>pid</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>p</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>i</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>d</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>maxKI</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>maxOut</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>PID参数初始化 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pid</td><td>pid结构体指针 </td></tr>
+    <tr><td class="paramname">p</td><td>p参数 </td></tr>
+    <tr><td class="paramname">i</td><td>i参数 </td></tr>
+    <tr><td class="paramname">d</td><td>d参数 </td></tr>
+    <tr><td class="paramname">maxKI</td><td>i限幅 </td></tr>
+    <tr><td class="paramname">maxOut</td><td>输出限幅 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_p_i_d_8c_source.html">PID.c</a> 第 <a class="el" href="_p_i_d_8c_source.html#l00027">27</a> 行定义.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>
