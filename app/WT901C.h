@@ -1,6 +1,6 @@
 /**
  * @file WT901C.h
- * @author ÔçÉÏ»µ (star32349@outlook.com)
+ * @author æ—©ä¸Šå (star32349@outlook.com)
  * @brief
  * @version 1.0
  * @date 2024-10-01
@@ -15,10 +15,10 @@
 #include "usart.h"
 #include "Chassis.h"
 #include "IMU.h"
-#define WT901C_huart huart2 /*!< ÍÓÂİÒÇÊ¹ÓÃ´®¿Ú2 */
+#define WT901C_huart huart2 /*!< é™€èºä»ªä½¿ç”¨ä¸²å£2 */
 /**
  * @struct WT901C_Time
- * @brief Ê±¼ä½á¹¹Ìå
+ * @brief æ—¶é—´ç»“æ„ä½“
  * 
  */
 typedef struct
@@ -33,7 +33,7 @@ typedef struct
 } WT901C_Time;
 /**
  * @struct WT901C_Acc
- * @brief ¼ÓËÙ¶È½á¹¹Ìå
+ * @brief åŠ é€Ÿåº¦ç»“æ„ä½“
  * 
  */
 typedef struct
@@ -45,7 +45,7 @@ typedef struct
 } WT901C_Acc;
 /**
  * @struct WT901C_Gyro
- * @brief ½ÇËÙ¶È½á¹¹Ìå
+ * @brief è§’é€Ÿåº¦ç»“æ„ä½“
  *
  */
 typedef struct
@@ -57,7 +57,7 @@ typedef struct
 } WT901C_Gyro;
 /**
  * @struct WT901C_Angle
- * @brief ½Ç¶È½á¹¹Ìå
+ * @brief è§’åº¦ç»“æ„ä½“
  *
  */
 typedef struct
@@ -69,7 +69,7 @@ typedef struct
 } WT901C_Angle;
 /**
  * @struct WT901C_Magnetic
- * @brief ´Å³¡½á¹¹Ìå
+ * @brief ç£åœºç»“æ„ä½“
  *
  */
 typedef struct

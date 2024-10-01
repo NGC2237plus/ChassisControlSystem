@@ -1,13 +1,13 @@
 /**
  * @file IMU.h
- * @author ÔçÉÏ»µ (star32349@outlook.com)
+ * @author æ—©ä¸Šå (star32349@outlook.com)
  * @brief
  * @version 1.0
  * @date 2024-10-01
  *
  * @copyright Copyright (c) 2024
  *
- * @deprecated ¸ÃÎÄ¼şÒÑ·ÏÆú£¬Ö÷ÒªÓÃÓÚĞ¡³µµ÷ÊÔ
+ * @deprecated è¯¥æ–‡ä»¶å·²åºŸå¼ƒï¼Œä¸»è¦ç”¨äºå°è½¦è°ƒè¯•
  */
 #ifndef __IMU_H
 #define __IMU_H

@@ -1,6 +1,6 @@
 /**
  * @file CRC.h
- * @author ÔçÉÏ»µ (star32349@outlook.com)
+ * @author æ—©ä¸Šå (star32349@outlook.com)
  * @brief 
  * @version 1.0
  * @date 2024-10-01

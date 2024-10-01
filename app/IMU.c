@@ -1,20 +1,20 @@
 /**
  * @file IMU.c
- * @author ÔçÉÏ»µ (star32349@outlook.com)
- * @brief IMU¹ßµ¼¼ÆËã¿ØÖÆ
+ * @author æ—©ä¸Šå (star32349@outlook.com)
+ * @brief IMUæƒ¯å¯¼è®¡ç®—æ§åˆ¶
  * @version 1.0
  * @date 2024-10-01
  *
  * @copyright Copyright (c) 2024
  *
- * @deprecated ¸ÃÎÄ¼şÒÑ·ÏÆú£¬Ö÷ÒªÓÃÓÚĞ¡³µµ÷ÊÔ
+ * @deprecated è¯¥æ–‡ä»¶å·²åºŸå¼ƒï¼Œä¸»è¦ç”¨äºå°è½¦è°ƒè¯•
  */
 #include "IMU.h"
 // float set_angle, real_angle, angel_falg;
 // uint8_t pp[7];
 
 /**
- * @brief IMU FreeRTOSÈÎÎñ
+ * @brief IMU FreeRTOSä»»åŠ¡
  *
  */
 void IMU_Task(void const *argument)

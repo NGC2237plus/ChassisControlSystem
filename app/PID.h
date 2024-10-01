@@ -1,6 +1,6 @@
 /**
  * @file PID.h
- * @author ÔçÉÏ»µ (star32349@outlook.com)
+ * @author æ—©ä¸Šå (star32349@outlook.com)
  * @brief
  * @version 1.0
  * @date 2024-10-01
@@ -16,24 +16,24 @@
 #include "math.h"
 /**
  * @struct PID_TypeDef
- * @brief pid½á¹¹Ìå
+ * @brief pidç»“æ„ä½“
  *
  */
 typedef struct
 {
-    float KP;              /*!< p²ÎÊı */
-    float KI;              /*!< i²ÎÊı */
-    float KD;              /*!< d²ÎÊı */
-    float Error;           /*!< µ±Ç°Îó²î */
-    float Last_Error;      /*!< ÉÏ´ÎÎó²î */
-    float Last_Last_Error; /*!< ÉÏÉÏ´ÎÎó²î */
-    float Sum_Error;       /*!< ÀÛ»ıÎó²î */
-    float Max_KI;          /*!< iÏŞ·ù */
-    float Max_Output;      /*!< Êä³öÏŞ·ù */
-    float Output;          /*!< Êä³öÖµ */
-    float pout;            /*!< pÊä³ö */
-    float iout;            /*!< iÊä³ö */
-    float dout;            /*!< dÊä³ö */
+    float KP;              /*!< på‚æ•° */
+    float KI;              /*!< iå‚æ•° */
+    float KD;              /*!< då‚æ•° */
+    float Error;           /*!< å½“å‰è¯¯å·® */
+    float Last_Error;      /*!< ä¸Šæ¬¡è¯¯å·® */
+    float Last_Last_Error; /*!< ä¸Šä¸Šæ¬¡è¯¯å·® */
+    float Sum_Error;       /*!< ç´¯ç§¯è¯¯å·® */
+    float Max_KI;          /*!< ié™å¹… */
+    float Max_Output;      /*!< è¾“å‡ºé™å¹… */
+    float Output;          /*!< è¾“å‡ºå€¼ */
+    float pout;            /*!< pè¾“å‡º */
+    float iout;            /*!< iè¾“å‡º */
+    float dout;            /*!< dè¾“å‡º */
 } PID_TypeDef;
 
 void PID_Init(PID_TypeDef *pid, float p, float i, float d, float maxKI, float maxOut);

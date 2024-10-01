@@ -1,28 +1,28 @@
 /**
  * @file PID.c
- * @author ÔçÉÏ»µ (star32349@outlook.com)
- * @brief PIDËã·¨°å¼¶Ö§³Ö°ü
+ * @author æ—©ä¸Šå (star32349@outlook.com)
+ * @brief PIDç®—æ³•æ¿çº§æ”¯æŒåŒ…
  * @version 1.0
  * @date 2024-10-01
  *
  * @copyright Copyright (c) 2024
  *
- * @par ĞŞ¸ÄÈÕÖ¾:
+ * @par ä¿®æ”¹æ—¥å¿—:
  * <table>
- * <tr><th>ÈÕÆÚ         <th>°æ±¾  <th>×÷Õß    <th>ÃèÊö
- * <tr><td>22024-10-01  <td>1.0   <td>ÔçÉÏ»µ  <td>³õÊ¼°æ±¾
+ * <tr><th>æ—¥æœŸ         <th>ç‰ˆæœ¬  <th>ä½œè€…    <th>æè¿°
+ * <tr><td>22024-10-01  <td>1.0   <td>æ—©ä¸Šå  <td>åˆå§‹ç‰ˆæœ¬
  * </table>
  */
 #include "pid.h"
 /**
- * @brief PID²ÎÊı³õÊ¼»¯
+ * @brief PIDå‚æ•°åˆå§‹åŒ–
  *
- * @param pid pid½á¹¹ÌåÖ¸Õë
- * @param p p²ÎÊı
- * @param i i²ÎÊı
- * @param d d²ÎÊı
- * @param maxKI iÏŞ·ù
- * @param maxOut Êä³öÏŞ·ù
+ * @param pid pidç»“æ„ä½“æŒ‡é’ˆ
+ * @param p på‚æ•°
+ * @param i iå‚æ•°
+ * @param d då‚æ•°
+ * @param maxKI ié™å¹…
+ * @param maxOut è¾“å‡ºé™å¹…
  */
 void PID_Init(PID_TypeDef *pid, float p, float i, float d, float maxKI, float maxOut)
 {
@@ -34,11 +34,11 @@ void PID_Init(PID_TypeDef *pid, float p, float i, float d, float maxKI, float ma
     pid->Error = pid->Last_Error = pid->Last_Last_Error = pid->Sum_Error = pid->pout = pid->iout = pid->dout = pid->Output = 0;
 }
 /**
- * @brief Î»ÖÃÊ½pid¼ÆËã
+ * @brief ä½ç½®å¼pidè®¡ç®—
  *
- * @param pid pid½á¹¹ÌåÖ¸Õë
- * @param SetValue ÉèÖÃÖµ
- * @param FeedBack Êµ¼ÊÖµ
+ * @param pid pidç»“æ„ä½“æŒ‡é’ˆ
+ * @param SetValue è®¾ç½®å€¼
+ * @param FeedBack å®é™…å€¼
  */
 void PID_Calc(PID_TypeDef *pid, float SetValue, float FeedBack)
 {
@@ -47,12 +47,12 @@ void PID_Calc(PID_TypeDef *pid, float SetValue, float FeedBack)
     pid->pout = pid->KP * pid->Error;
     pid->iout = pid->KI * pid->Sum_Error;
     pid->dout = pid->KD * (pid->Error - pid->Last_Error);
-    // »ı·ÖÏŞ·ù
+    // ç§¯åˆ†é™å¹…
     if (pid->iout > pid->Max_KI)
         pid->iout = pid->Max_KI;
     else if (pid->iout < -pid->Max_KI)
         pid->iout = -pid->Max_KI;
-    // // Êä³öÏŞ·ù
+    // // è¾“å‡ºé™å¹…
     pid->Output = pid->pout + pid->iout + pid->dout;
     if (pid->Output > pid->Max_Output)
         pid->Output = pid->Max_Output;
@@ -62,11 +62,11 @@ void PID_Calc(PID_TypeDef *pid, float SetValue, float FeedBack)
     pid->Last_Error = pid->Error;
 }
 /**
- * @brief ÔöÁ¿Ê½pid¼ÆËã
+ * @brief å¢é‡å¼pidè®¡ç®—
  *
- * @param pid pid½á¹¹ÌåÖ¸Õë
- * @param SetValue ÉèÖÃÖµ
- * @param FeedBack Êµ¼ÊÖµ
+ * @param pid pidç»“æ„ä½“æŒ‡é’ˆ
+ * @param SetValue è®¾ç½®å€¼
+ * @param FeedBack å®é™…å€¼
  */
 void PID_Add_Calc(PID_TypeDef *pid, float SetValue, float FeedBack)
 {
@@ -91,9 +91,9 @@ void PID_Add_Calc(PID_TypeDef *pid, float SetValue, float FeedBack)
     pid->Last_Error = pid->Error;
 }
 /**
- * @brief Çå¿Õpid£¬³ı²ÎÊıÍâ¸³ÖµÎª0
+ * @brief æ¸…ç©ºpidï¼Œé™¤å‚æ•°å¤–èµ‹å€¼ä¸º0
  *
- * @param pid pid½á¹¹ÌåÖ¸Õë
+ * @param pid pidç»“æ„ä½“æŒ‡é’ˆ
  */
 void PID_clear(PID_TypeDef *pid)
 {

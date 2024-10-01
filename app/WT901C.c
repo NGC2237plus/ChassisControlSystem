@@ -1,36 +1,36 @@
 /**
  * @file WT901C.c
- * @author ÔçÉÏ»µ (star32349@outlook.com)
- * @brief WT901CÍÓÂİÒÇ£¬½ÓÊÕ²¢´¦ÀíÍÓÂİÒÇÊı¾İ
+ * @author æ—©ä¸Šå (star32349@outlook.com)
+ * @brief WT901Cé™€èºä»ªï¼Œæ¥æ”¶å¹¶å¤„ç†é™€èºä»ªæ•°æ®
  * @version 1.0
  * @date 2024-10-01
  *
  * @copyright Copyright (c) 2024
  *
- * @par ĞŞ¸ÄÈÕÖ¾:
+ * @par ä¿®æ”¹æ—¥å¿—:
  * <table>
- * <tr><th>ÈÕÆÚ         <th>°æ±¾  <th>×÷Õß    <th>ÃèÊö
- * <tr><td>22024-10-01  <td>1.0   <td>ÔçÉÏ»µ  <td>³õÊ¼°æ±¾
+ * <tr><th>æ—¥æœŸ         <th>ç‰ˆæœ¬  <th>ä½œè€…    <th>æè¿°
+ * <tr><td>22024-10-01  <td>1.0   <td>æ—©ä¸Šå  <td>åˆå§‹ç‰ˆæœ¬
  * </table>
  *
  * @see https://wit-motion.yuque.com/wumwnr/ltst03/vl3tpy?#%20%E3%80%8AWIT%E7%A7%81%E6%9C%89%E5%8D%8F%E8%AE%AE%E3%80%8B
  */
 #include "WT901C.h"
-#define WT901C_HEAD 0X55   /*!< Ğ­ÒéÍ· */
-#define TIME_TYPE 0X50     /*!< Ê±¼äÊı¾İÍ· */
-#define ACC_TYPE 0X51      /*!< ¼ÓËÙ¶ÈÊı¾İÍ· */
-#define GYRO_TYPE 0X52     /*!< ½ÇËÙ¶ÈÊı¾İÍ· */
-#define ANGLE_TYPE 0X53    /*!< ½Ç¶ÈÊı¾İÍ· */
-#define MAGNETIC_TYPE 0x54 /*!< ´Å³¡Êı¾İÍ· */
+#define WT901C_HEAD 0X55   /*!< åè®®å¤´ */
+#define TIME_TYPE 0X50     /*!< æ—¶é—´æ•°æ®å¤´ */
+#define ACC_TYPE 0X51      /*!< åŠ é€Ÿåº¦æ•°æ®å¤´ */
+#define GYRO_TYPE 0X52     /*!< è§’é€Ÿåº¦æ•°æ®å¤´ */
+#define ANGLE_TYPE 0X53    /*!< è§’åº¦æ•°æ®å¤´ */
+#define MAGNETIC_TYPE 0x54 /*!< ç£åœºæ•°æ®å¤´ */
 
 uint8_t Rx_buf, Rx_flag;
 uint8_t buffer[9];
 
-WT901C_Time IMU_time;         /*!< Ê±¼äÊı¾İ */
-WT901C_Acc IMU_acc;           /*!< ¼ÓËÙ¶ÈÊı¾İ */
-WT901C_Gyro IMU_gyro;         /*!< ½ÇËÙ¶ÈÊı¾İ */
-WT901C_Angle IMU_angle;       /*!< ½Ç¶ÈÊı¾İÍ· */
-WT901C_Magnetic IMU_magnetic; /*!< ´Å³¡Êı¾İÍ· */
+WT901C_Time IMU_time;         /*!< æ—¶é—´æ•°æ® */
+WT901C_Acc IMU_acc;           /*!< åŠ é€Ÿåº¦æ•°æ® */
+WT901C_Gyro IMU_gyro;         /*!< è§’é€Ÿåº¦æ•°æ® */
+WT901C_Angle IMU_angle;       /*!< è§’åº¦æ•°æ®å¤´ */
+WT901C_Magnetic IMU_magnetic; /*!< ç£åœºæ•°æ®å¤´ */
 
 uint8_t WT901C_SumCRC(uint8_t Type, uint8_t *data);
 void Time_Dispose(WT901C_Time *time);
@@ -39,8 +39,8 @@ void Gyro_Dispose(WT901C_Gyro *gyro);
 void Magnetic_Dispose(WT901C_Magnetic *magnetic);
 void Angle_Dispose(WT901C_Angle *angle);
 /**
- * @brief ´®¿Ú½ÓÊÕÖĞ¶Ï»Øµ÷º¯Êı
- * @note º¯ÊıÊÇHAL¿âµÄÖĞ¶Ï»Øµ÷£¬ÄÚ²¿ĞèÅĞ¶Ï´®¿ÚºÅÒÔµ÷ÓÃ²»Í¬µÄ´®¿Ú½ÓÊÕ´¦Àí
+ * @brief ä¸²å£æ¥æ”¶ä¸­æ–­å›è°ƒå‡½æ•°
+ * @note å‡½æ•°æ˜¯HALåº“çš„ä¸­æ–­å›è°ƒï¼Œå†…éƒ¨éœ€åˆ¤æ–­ä¸²å£å·ä»¥è°ƒç”¨ä¸åŒçš„ä¸²å£æ¥æ”¶å¤„ç†
  */
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
@@ -93,11 +93,11 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
     }
 }
 /**
- * @brief CRCĞ£ÑéºÍ
+ * @brief CRCæ ¡éªŒå’Œ
  *
- * @param Type Êı¾İÀàĞÍ
- * @param data Êı¾İ
- * @return uint8_t CRCĞ£ÑéºÍ
+ * @param Type æ•°æ®ç±»å‹
+ * @param data æ•°æ®
+ * @return uint8_t CRCæ ¡éªŒå’Œ
  */
 uint8_t WT901C_SumCRC(uint8_t Type, uint8_t *data)
 {
@@ -110,9 +110,9 @@ uint8_t WT901C_SumCRC(uint8_t Type, uint8_t *data)
     return Sum;
 }
 /**
- * @brief Ê±¼äÊı¾İ½âËã
+ * @brief æ—¶é—´æ•°æ®è§£ç®—
  *
- * @param time Ê±¼äÊı¾İ
+ * @param time æ—¶é—´æ•°æ®
  */
 void Time_Dispose(WT901C_Time *time)
 {
@@ -125,9 +125,9 @@ void Time_Dispose(WT901C_Time *time)
     time->ms = (uint16_t)buffer[7] << 8 | buffer[6];
 }
 /**
- * @brief ¼ÓËÙ¶ÈÊı¾İ½âËã
+ * @brief åŠ é€Ÿåº¦æ•°æ®è§£ç®—
  *
- * @param time ¼ÓËÙ¶ÈÊı¾İ
+ * @param time åŠ é€Ÿåº¦æ•°æ®
  */
 void Acc_Dispose(WT901C_Acc *acc)
 {
@@ -137,9 +137,9 @@ void Acc_Dispose(WT901C_Acc *acc)
     acc->Temp = (((int16_t)buffer[7] << 8) | buffer[6]) / 100.0;
 }
 /**
- * @brief ½ÇËÙ¶ÈÊı¾İ½âËã
+ * @brief è§’é€Ÿåº¦æ•°æ®è§£ç®—
  *
- * @param time ½ÇËÙ¶ÈÊı¾İ
+ * @param time è§’é€Ÿåº¦æ•°æ®
  */
 void Gyro_Dispose(WT901C_Gyro *gyro)
 {
@@ -149,9 +149,9 @@ void Gyro_Dispose(WT901C_Gyro *gyro)
     // gyro->Vol = (((int16_t)buffer[7] << 8) | buffer[6]) / 100.0;
 }
 /**
- * @brief ½Ç¶ÈÊı¾İ½âËã
+ * @brief è§’åº¦æ•°æ®è§£ç®—
  *
- * @param time ½Ç¶ÈÊı¾İ
+ * @param time è§’åº¦æ•°æ®
  */
 void Angle_Dispose(WT901C_Angle *angle)
 {
@@ -161,9 +161,9 @@ void Angle_Dispose(WT901C_Angle *angle)
     angle->Version = ((uint16_t)buffer[7] << 8) | buffer[6];
 }
 /**
- * @brief ´Å³¡Êı¾İ½âËã
+ * @brief ç£åœºæ•°æ®è§£ç®—
  *
- * @param time ´Å³¡Êı¾İ
+ * @param time ç£åœºæ•°æ®
  */
 void Magnetic_Dispose(WT901C_Magnetic *magnetic)
 {

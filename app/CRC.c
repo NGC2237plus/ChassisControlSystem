@@ -1,27 +1,27 @@
 /**
  * @file CRC.c
- * @author ÔçÉÏ»µ (star32349@outlook.com)
- * @brief CRCĞ£ÑéËã·¨°å¼¶Ö§³Ö°ü
+ * @author æ—©ä¸Šå (star32349@outlook.com)
+ * @brief CRCæ ¡éªŒç®—æ³•æ¿çº§æ”¯æŒåŒ…
  * @version 1.0
  * @date 2024-10-01
  * 
  * @copyright Copyright (c) 2024
  * 
- * @par ĞŞ¸ÄÈÕÖ¾:
+ * @par ä¿®æ”¹æ—¥å¿—:
  * <table>
- * <tr><th>ÈÕÆÚ         <th>°æ±¾  <th>×÷Õß    <th>ÃèÊö
- * <tr><td>22024-10-01  <td>1.0   <td>ÔçÉÏ»µ  <td>³õÊ¼°æ±¾
+ * <tr><th>æ—¥æœŸ         <th>ç‰ˆæœ¬  <th>ä½œè€…    <th>æè¿°
+ * <tr><td>22024-10-01  <td>1.0   <td>æ—©ä¸Šå  <td>åˆå§‹ç‰ˆæœ¬
  * </table>
  */
 #include "crc.h"
 
 /**
- * @brief ·´×ªÒ»¸ö×Ö½ÚµÄÎ»Ë³Ğò
+ * @brief åè½¬ä¸€ä¸ªå­—èŠ‚çš„ä½é¡ºåº
  * 
- * @param DesBuf Êä³ö»º³åÇø£¬´æ´¢·´×ªºóµÄ×Ö½Ú
- * @param SrcBuf ÊäÈë»º³åÇø£¬°üº¬Òª·´×ªµÄ×Ö½Ú
+ * @param DesBuf è¾“å‡ºç¼“å†²åŒºï¼Œå­˜å‚¨åè½¬åçš„å­—èŠ‚
+ * @param SrcBuf è¾“å…¥ç¼“å†²åŒºï¼ŒåŒ…å«è¦åè½¬çš„å­—èŠ‚
  * 
- * @note ´Ëº¯Êı½«ÊäÈë×Ö½ÚµÄÎ»Ë³Ğò·´×ª²¢´æ´¢µ½Êä³ö»º³åÇø¡£
+ * @note æ­¤å‡½æ•°å°†è¾“å…¥å­—èŠ‚çš„ä½é¡ºåºåè½¬å¹¶å­˜å‚¨åˆ°è¾“å‡ºç¼“å†²åŒºã€‚
  */
 void InvertUint8(uint8_t *DesBuf, uint8_t *SrcBuf)
 {
@@ -38,12 +38,12 @@ void InvertUint8(uint8_t *DesBuf, uint8_t *SrcBuf)
     DesBuf[0] = temp;
 }
 /**
- * @brief ·´×ªÒ»¸ö×ÖµÄÎ»Ë³Ğò
+ * @brief åè½¬ä¸€ä¸ªå­—çš„ä½é¡ºåº
  * 
- * @param DesBuf Êä³ö»º³åÇø£¬´æ´¢·´×ªºóµÄ×Ö
- * @param SrcBuf ÊäÈë»º³åÇø£¬°üº¬Òª·´×ªµÄ×Ö
+ * @param DesBuf è¾“å‡ºç¼“å†²åŒºï¼Œå­˜å‚¨åè½¬åçš„å­—
+ * @param SrcBuf è¾“å…¥ç¼“å†²åŒºï¼ŒåŒ…å«è¦åè½¬çš„å­—
  * 
- * @note ´Ëº¯Êı½«ÊäÈë×ÖµÄÎ»Ë³Ğò·´×ª²¢´æ´¢µ½Êä³ö»º³åÇø¡£
+ * @note æ­¤å‡½æ•°å°†è¾“å…¥å­—çš„ä½é¡ºåºåè½¬å¹¶å­˜å‚¨åˆ°è¾“å‡ºç¼“å†²åŒºã€‚
  */
 void InvertUint16(uint16_t *DesBuf, uint16_t *SrcBuf)
 {
@@ -60,13 +60,13 @@ void InvertUint16(uint16_t *DesBuf, uint16_t *SrcBuf)
     DesBuf[0] = temp;
 }
 /**
- * @brief ¼ÆËã CRC-16/X.25 Ğ£ÑéÂë
+ * @brief è®¡ç®— CRC-16/X.25 æ ¡éªŒç 
  * 
- * @param puchMsg Ö¸ÏòÊäÈëÊı¾İµÄÖ¸Õë
- * @param usDataLen ÊäÈëÊı¾İµÄ³¤¶È
- * @return uint16_t ¼ÆËãµÃµ½µÄ CRC Ğ£ÑéÂë
+ * @param puchMsg æŒ‡å‘è¾“å…¥æ•°æ®çš„æŒ‡é’ˆ
+ * @param usDataLen è¾“å…¥æ•°æ®çš„é•¿åº¦
+ * @return uint16_t è®¡ç®—å¾—åˆ°çš„ CRC æ ¡éªŒç 
  * 
- * @note ´Ëº¯ÊıÊµÏÖ CRC-16/X25 Ğ£ÑéËã·¨£¬ÊäÈëÊı¾İ·´×ªºó¼ÆËã CRC Öµ¡£
+ * @note æ­¤å‡½æ•°å®ç° CRC-16/X25 æ ¡éªŒç®—æ³•ï¼Œè¾“å…¥æ•°æ®åè½¬åè®¡ç®— CRC å€¼ã€‚
  */
 uint16_t CRC16_X25(uint8_t *puchMsg, unsigned int usDataLen)
 {

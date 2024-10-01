@@ -1,6 +1,6 @@
 /**
  * @file Chassis.h
- * @author ‘Á…œªµ (star32349@outlook.com)
+ * @author Êó©‰∏äÂùè (star32349@outlook.com)
  * @brief
  * @version 1.0
  * @date 2024-10-01
@@ -18,27 +18,27 @@
 #include "WT901C.h"
 #include "pid.h"
 #include "CRC.h"
-#define Motor_PI 3.14159265358979323846f /*!< ‘≤÷‹¬  */
+#define Motor_PI 3.14159265358979323846f /*!< ÂúÜÂë®Áéá */
 
-#define Motor1_PWM_H htim2.Instance->CCR1 /*!< ∂® ±∆˜2 PWMÕ®µ¿1 */
-#define Motor1_PWM_L htim2.Instance->CCR2 /*!< ∂® ±∆˜2 PWMÕ®µ¿2 */
+#define Motor1_PWM_H htim2.Instance->CCR1 /*!< ÂÆöÊó∂Âô®2 PWMÈÄöÈÅì1 */
+#define Motor1_PWM_L htim2.Instance->CCR2 /*!< ÂÆöÊó∂Âô®2 PWMÈÄöÈÅì2 */
 
-#define Motor2_PWM_H htim2.Instance->CCR3 /*!< ∂® ±∆˜2 PWMÕ®µ¿3 */
-#define Motor2_PWM_L htim2.Instance->CCR4 /*!< ∂® ±∆˜2 PWMÕ®µ¿4 */
+#define Motor2_PWM_H htim2.Instance->CCR3 /*!< ÂÆöÊó∂Âô®2 PWMÈÄöÈÅì3 */
+#define Motor2_PWM_L htim2.Instance->CCR4 /*!< ÂÆöÊó∂Âô®2 PWMÈÄöÈÅì4 */
 
-#define Motor3_PWM_H htim3.Instance->CCR1 /*!< ∂® ±∆˜3 PWMÕ®µ¿1 */
-#define Motor3_PWM_L htim3.Instance->CCR2 /*!< ∂® ±∆˜3 PWMÕ®µ¿2 */
+#define Motor3_PWM_H htim3.Instance->CCR1 /*!< ÂÆöÊó∂Âô®3 PWMÈÄöÈÅì1 */
+#define Motor3_PWM_L htim3.Instance->CCR2 /*!< ÂÆöÊó∂Âô®3 PWMÈÄöÈÅì2 */
 
-#define Motor4_PWM_H htim3.Instance->CCR3 /*!< ∂® ±∆˜3 PWMÕ®µ¿3 */
-#define Motor4_PWM_L htim3.Instance->CCR4 /*!< ∂® ±∆˜3 PWMÕ®µ¿4 */
+#define Motor4_PWM_H htim3.Instance->CCR3 /*!< ÂÆöÊó∂Âô®3 PWMÈÄöÈÅì3 */
+#define Motor4_PWM_L htim3.Instance->CCR4 /*!< ÂÆöÊó∂Âô®3 PWMÈÄöÈÅì4 */
 
-#define Packet_Head 0x05 /*!< ÷°Õ∑ */
-#define Packet_End 0x22  /*!< ÷°Œ≤ */
-#define MaxSpeed 1000    /*!< ÀŸ∂»◊Ó¥Û÷µ */
-#define MinSpeed 100     /*!< ÀŸ∂»◊Ó–°÷µ */
+#define Packet_Head 0x05 /*!< Â∏ßÂ§¥ */
+#define Packet_End 0x22  /*!< Â∏ßÂ∞æ */
+#define MaxSpeed 1000    /*!< ÈÄüÂ∫¶ÊúÄÂ§ßÂÄº */
+#define MinSpeed 100     /*!< ÈÄüÂ∫¶ÊúÄÂ∞èÂÄº */
 /**
  * @struct Remote_control
- * @brief øÿ÷∆ ˝æ›Ω·ππÃÂ
+ * @brief ÊéßÂà∂Êï∞ÊçÆÁªìÊûÑ‰Ωì
  *
  */
 typedef struct
@@ -49,21 +49,21 @@ typedef struct
 } Remote_control;
 /**
  * @struct Motor_t
- * @brief µÁª˙Ω·ππÃÂ
+ * @brief ÁîµÊú∫ÁªìÊûÑ‰Ωì
  *
  */
 typedef struct
 {
-    int16_t Set_speed;          /*!< …Ë÷√ÀŸ∂» */
-    __IO uint16_t Encode_Count; /*!< ±‡¬Î∆˜º∆ ˝ */
-    float rps;                  /*!< ◊™ÀŸn/s */
-    float speed;                /*!< ÀŸ∂»m/s */
-    int8_t dir;                 /*!< µÁª˙–˝◊™∑ΩœÚ */
-    PID_TypeDef pid;            /*!< pidÀŸ∂»ª∑ */
+    int16_t Set_speed;          /*!< ËÆæÁΩÆÈÄüÂ∫¶ */
+    __IO uint16_t Encode_Count; /*!< ÁºñÁ†ÅÂô®ËÆ°Êï∞ */
+    float rps;                  /*!< ËΩ¨ÈÄün/s */
+    float speed;                /*!< ÈÄüÂ∫¶m/s */
+    int8_t dir;                 /*!< ÁîµÊú∫ÊóãËΩ¨ÊñπÂêë */
+    PID_TypeDef pid;            /*!< pidÈÄüÂ∫¶ÁéØ */
 } Motor_t;
 /**
  * @struct Chassis_t
- * @brief µ◊≈Ã ˝æ›Ω·ππÃÂ
+ * @brief Â∫ïÁõòÊï∞ÊçÆÁªìÊûÑ‰Ωì
  *
  */
 typedef struct
@@ -72,9 +72,9 @@ typedef struct
     Motor_t Motor2;
     Motor_t Motor3;
     Motor_t Motor4;
-    float set_angle;       /*!< …Ë∂®Ω«∂» */
-    float real_angle;      /*!<  µº Ω«∂» */
-    PID_TypeDef Angle_pid; /*!< pidΩ«∂»ª∑ */
+    float set_angle;       /*!< ËÆæÂÆöËßíÂ∫¶ */
+    float real_angle;      /*!< ÂÆûÈôÖËßíÂ∫¶ */
+    PID_TypeDef Angle_pid; /*!< pidËßíÂ∫¶ÁéØ */
 } Chassis_t;
 
 extern Remote_control control;

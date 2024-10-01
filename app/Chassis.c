@@ -1,73 +1,76 @@
 /**
- * @mainpage  ÖÇÄÜ³µµ×ÅÌ¿ØÖÆ³ÌĞò
+ * @mainpage  æ™ºèƒ½è½¦åº•ç›˜æ§åˆ¶ç¨‹åº
  * <table>
- * <tr><th>¹¤³Ì  <td>F407_Chassis2.0
- * <tr><th>×÷Õß   <td>ÔçÉÏ»µ (star32349@outlook.com)
+ * <tr><th>å·¥ç¨‹  <td>F407_Chassis2.0
+ * <tr><th>ä½œè€…   <td>æ—©ä¸Šå (star32349@outlook.com)
  * </table>
- * @section   ÏêÏ¸ÃèÊö
- * ÖÇÄÜ³µµ×ÅÌ¿ØÖÆ³ÌĞò£¬¸ù¾İ´®¿ÚÊı¾İ¿ØÖÆÒÆ¶¯
+ * @section   è¯¦ç»†æè¿°
+ * æ™ºèƒ½è½¦åº•ç›˜æ§åˆ¶ç¨‹åºï¼Œæ ¹æ®ä¸²å£æ•°æ®æ§åˆ¶ç§»åŠ¨
  *
- * @section   ¹¦ÄÜÃèÊö
- * - STM32F407VET6 + STM32 HAL¿â + FreeRTOS¿ª·¢
- * - µ×ÅÌ²ÉÓÃÂó¿ËÄÉÄ·ÂÖ
- * - ÍÓÂİÒÇĞ£ÕıÔË¶¯Îó²î
+ * @section   åŠŸèƒ½æè¿°
+ * - STM32F407VET6 + STM32 HALåº“ + FreeRTOSå¼€å‘
+ * - åº•ç›˜é‡‡ç”¨éº¦å…‹çº³å§†è½®
+ * - é™€èºä»ªæ ¡æ­£è¿åŠ¨è¯¯å·®
  *
- * @section   ÓÃ·¨ÃèÊö
- * - ¾ßÌå´®¿ÚĞ­ÒéÇë²Î¿¼ÎÄµµ
+ * @section   ç”¨æ³•æè¿°
+ * - å…·ä½“ä¸²å£åè®®è¯·å‚è€ƒæ–‡æ¡£
  *
- * @section   ¹Ì¼ş¸üĞÂ
+ * @section   å›ºä»¶æ›´æ–°
  * <table>
- * <tr><th>ÈÕÆÚ        <th>°æ±¾    <th>×÷Õß                             <th>Description  </tr>
- * <tr><td>2023-12-05  <td>1.0     <td>ÔçÉÏ»µ (star32349@outlook.com)   <td>³õÊ¼°æ±¾ </tr>
- * <tr><td>2024-04-01  <td>2.0     <td>ÔçÉÏ»µ (star32349@outlook.com)   <td>Ëã·¨ÓÅ»¯£¬´úÂëÍêÉÆ </tr>
+ * <tr><th>æ—¥æœŸ        <th>ç‰ˆæœ¬    <th>ä½œè€…                             <th>Description  </tr>
+ * <tr><td>2023-12-05  <td>1.0     <td>æ—©ä¸Šå (star32349@outlook.com)   <td>åˆå§‹ç‰ˆæœ¬ </tr>
+ * <tr><td>2024-04-01  <td>2.0     <td>æ—©ä¸Šå (star32349@outlook.com)   <td>ç®—æ³•ä¼˜åŒ–ï¼Œä»£ç å®Œå–„ </tr>
  * </table>
+ * 
+ * [ç‚¹å‡»æŸ¥çœ‹ GitHub](https://github.com/NGC2237plus/ChassisControlSystem)
  */
 /**
  * @file Chassis.c
- * @author ÔçÉÏ»µ (star32349@outlook.com)
- * @brief µ×ÅÌÔË¶¯¿ØÖÆ
+ * @author æ—©ä¸Šå (star32349@outlook.com)
+ * @brief åº•ç›˜è¿åŠ¨æ§åˆ¶
  * @version 1.0
  * @date 2024-10-01
  *
  * @copyright Copyright (c) 2024
  *
- * @par ĞŞ¸ÄÈÕÖ¾:
+ * @par ä¿®æ”¹æ—¥å¿—:
  * <table>
- * <tr><th>ÈÕÆÚ         <th>°æ±¾  <th>×÷Õß    <th>ÃèÊö
- * <tr><td>22024-10-01  <td>1.0   <td>ÔçÉÏ»µ  <td>³õÊ¼°æ±¾
+ * <tr><th>æ—¥æœŸ         <th>ç‰ˆæœ¬  <th>ä½œè€…    <th>æè¿°
+ * <tr><td>22024-10-01  <td>1.0   <td>æ—©ä¸Šå  <td>åˆå§‹ç‰ˆæœ¬
  * </table>
+ * 
  */
 #include "chassis.h"
-#define Wheel_Diameter 0.06f         /*!< ÂÖ×ÓÖ±¾¶£¬µ¥Î»m */
-#define Speed_Factor 0.001f          /*!<  ËÙ¶ÈÏµÊı */
-#define Pulse_Num 390.0f             /*!<  Ğı×ªÒ»È¦±àÂëÆ÷Êä³öµÄÂö³åÊı */
-#define DIR 1                        /*!<  Ğı×ª·½Ïò£¬±àºÅĞ¡µÄPWMÊäÈëÒı½Å¸ßµçÆ½Ê±£¬Ë³Ê±ÕëĞı×ªÎª1£¬ÄæÊ±ÕëÎª-1 */
-__IO uint16_t time_count, time, sec; /* ¼ÆÊ± */
-uint8_t data[9];                     /* ½ÓÊÕµÄ¿ØÖÆÊı¾İ */
-uint8_t Usart_Head;                  /* Ö¡Í· */
-uint16_t CRC16;                      /* CRCĞ£Ñé */
+#define Wheel_Diameter 0.06f         /*!< è½®å­ç›´å¾„ï¼Œå•ä½m */
+#define Speed_Factor 0.001f          /*!<  é€Ÿåº¦ç³»æ•° */
+#define Pulse_Num 390.0f             /*!<  æ—‹è½¬ä¸€åœˆç¼–ç å™¨è¾“å‡ºçš„è„‰å†²æ•° */
+#define DIR 1                        /*!<  æ—‹è½¬æ–¹å‘ï¼Œç¼–å·å°çš„PWMè¾“å…¥å¼•è„šé«˜ç”µå¹³æ—¶ï¼Œé¡ºæ—¶é’ˆæ—‹è½¬ä¸º1ï¼Œé€†æ—¶é’ˆä¸º-1 */
+__IO uint16_t time_count, time, sec; /* è®¡æ—¶ */
+uint8_t data[9];                     /* æ¥æ”¶çš„æ§åˆ¶æ•°æ® */
+uint8_t Usart_Head;                  /* å¸§å¤´ */
+uint16_t CRC16;                      /* CRCæ ¡éªŒ */
 /**
- * @brief Êı¾İÓĞĞ§±êÖ¾
+ * @brief æ•°æ®æœ‰æ•ˆæ ‡å¿—
  * @note
- * - value = 0£ºÊı¾İÓĞĞ§
- * - value = 1£ºÊı¾İCRCĞ£Ñé´íÎó
- * - value = 2£ºÎ´½ÓÊÕµ½Ö¡Î²
+ * - value = 0ï¼šæ•°æ®æœ‰æ•ˆ
+ * - value = 1ï¼šæ•°æ®CRCæ ¡éªŒé”™è¯¯
+ * - value = 2ï¼šæœªæ¥æ”¶åˆ°å¸§å°¾
  */
 uint8_t Data_Flag = 0;
 /**
- * @brief ½ÓÊÕ×´Ì¬±êÖ¾
+ * @brief æ¥æ”¶çŠ¶æ€æ ‡å¿—
  * @note
- * - value = 0£ºµÈ´ıÖ¡Í·
- * - value = 1£ºÒÑ½ÓÊÕµ½Ö¡Í·£¬¿ªÊ¼½ÓÊÕÊ£ÏÂµÄÊı¾İ
+ * - value = 0ï¼šç­‰å¾…å¸§å¤´
+ * - value = 1ï¼šå·²æ¥æ”¶åˆ°å¸§å¤´ï¼Œå¼€å§‹æ¥æ”¶å‰©ä¸‹çš„æ•°æ®
  */
 uint8_t Usart_Flag = 0;
-Remote_control control; /*!< ¿ØÖÆÊı¾İ */
-Chassis_t chassis;      /*!< µ×ÅÌÊı¾İ */
+Remote_control control; /*!< æ§åˆ¶æ•°æ® */
+Chassis_t chassis;      /*!< åº•ç›˜æ•°æ® */
 /**
- * @brief ×î´óÖµÏŞÖÆ
- * @param value ÒªÏŞÖÆµÄÖµ
- * @param Max ÏŞÖÆµÄ×î´óÖµ
- * @retval Öµ·¶Î§[-Max, Max]
+ * @brief æœ€å¤§å€¼é™åˆ¶
+ * @param value è¦é™åˆ¶çš„å€¼
+ * @param Max é™åˆ¶çš„æœ€å¤§å€¼
+ * @retval å€¼èŒƒå›´[-Max, Max]
  */
 #define Limit_Max(value, Max)  \
     {                          \
@@ -77,10 +80,10 @@ Chassis_t chassis;      /*!< µ×ÅÌÊı¾İ */
             value = -Max;      \
     }
 /**
- * @brief ×îĞ¡ÖµÏŞÖÆ
- * @param value ÒªÏŞÖÆµÄÖµ
- * @param Min ÏŞÖÆµÄ×îĞ¡Öµ
- * @retval Öµ·¶Î§[-Min, Min]
+ * @brief æœ€å°å€¼é™åˆ¶
+ * @param value è¦é™åˆ¶çš„å€¼
+ * @param Min é™åˆ¶çš„æœ€å°å€¼
+ * @retval å€¼èŒƒå›´[-Min, Min]
  */
 #define Limit_Min(value, Min)              \
     {                                      \
@@ -88,23 +91,23 @@ Chassis_t chassis;      /*!< µ×ÅÌÊı¾İ */
             value = 0;                     \
     }
 /**
- * @brief µ×ÅÌFreeRTOSÈÎÎñ
+ * @brief åº•ç›˜FreeRTOSä»»åŠ¡
  */
 void Chassis_Task(void const *argument)
 {
-    uint16_t count_buf1, count_buf2, count_buf3, count_buf4; /*!< »º³å£¬·ÀÖ¹¼ÆËãÊ±ÊıÖµ±ä»¯ */
-    /* ¿ªÆô¶¨Ê±Æ÷ÖĞ¶Ï */
+    uint16_t count_buf1, count_buf2, count_buf3, count_buf4; /*!< ç¼“å†²ï¼Œé˜²æ­¢è®¡ç®—æ—¶æ•°å€¼å˜åŒ– */
+    /* å¼€å¯å®šæ—¶å™¨ä¸­æ–­ */
     HAL_TIM_Base_Start_IT(&htim4);
-    /* PWM¶¨Ê±Æ÷³õÊ¼»¯ */
+    /* PWMå®šæ—¶å™¨åˆå§‹åŒ– */
     PWM_Init(&htim2);
     PWM_Init(&htim3);
-    /* µ×ÅÌ¿ØÖÆ´®¿Ú½ÓÊÕÖĞ¶Ï */
+    /* åº•ç›˜æ§åˆ¶ä¸²å£æ¥æ”¶ä¸­æ–­ */
     HAL_UART_Receive_IT(&huart1, &Usart_Head, 1);
-    /* ÍÓÂİÒÇ´®¿Ú½ÓÊÕÖĞ¶Ï */
+    /* é™€èºä»ªä¸²å£æ¥æ”¶ä¸­æ–­ */
     HAL_UART_Receive_IT(&huart2, &Rx_buf, 1);
-    // PID_Init(&chassis.Angle_pid, 2, 1, 1, 100, 100);//½Ç¶È»·
-    // chassis.set_angle = IMU_angle.Yaw; // ½Ç¶È»·pid
-    /* PID²ÎÊı³õÊ¼»¯ */
+    // PID_Init(&chassis.Angle_pid, 2, 1, 1, 100, 100);//è§’åº¦ç¯
+    // chassis.set_angle = IMU_angle.Yaw; // è§’åº¦ç¯pid
+    /* PIDå‚æ•°åˆå§‹åŒ– */
     PID_Init(&chassis.Motor1.pid, 5000, 10, 100, 1000, 1000);
     PID_Init(&chassis.Motor2.pid, 5000, 10, 100, 1000, 1000);
     PID_Init(&chassis.Motor3.pid, 5000, 10, 100, 1000, 1000);
@@ -122,10 +125,10 @@ void Chassis_Task(void const *argument)
         //     chassis.set_angle += 360;
         // PID_Add_Calc(&chassis.Angle_pid, chassis.set_angle, chassis.real_angle);
         // Motor_Speed(control.Vx, control.Vy, -chassis.Angle_pid.Output * 50);
-        /* ¼ÆËãÉèÖÃËÙ¶È */
+        /* è®¡ç®—è®¾ç½®é€Ÿåº¦ */
         Motor_Speed(control.Vx, control.Vy, control.Vz);
 
-        /* ¼ÆËãÊµ¼ÊËÙ¶È */
+        /* è®¡ç®—å®é™…é€Ÿåº¦ */
         time_count = 0;
         chassis.Motor1.Encode_Count = chassis.Motor2.Encode_Count = chassis.Motor3.Encode_Count = chassis.Motor4.Encode_Count = 0;
         while (time_count < 10)
@@ -147,7 +150,7 @@ void Chassis_Task(void const *argument)
         chassis.Motor4.rps = count_buf4 / Pulse_Num * 100;
         chassis.Motor4.speed = chassis.Motor4.rps * Motor_PI * Wheel_Diameter * chassis.Motor4.dir;
 
-        /* PID¼ÆËã */
+        /* PIDè®¡ç®— */
         PID_Calc(&chassis.Motor1.pid, chassis.Motor1.Set_speed * Speed_Factor, chassis.Motor1.speed);
         PID_Calc(&chassis.Motor2.pid, chassis.Motor2.Set_speed * Speed_Factor, chassis.Motor2.speed);
         PID_Calc(&chassis.Motor3.pid, chassis.Motor3.Set_speed * Speed_Factor, chassis.Motor3.speed);
@@ -157,8 +160,8 @@ void Chassis_Task(void const *argument)
 }
 
 /**
- * @brief ¶¨Ê±Æ÷ÖĞ¶Ï»Øµ÷º¯Êı
- * @note TIM4¶¨Ê±Ê±¼ä1ms
+ * @brief å®šæ—¶å™¨ä¸­æ–­å›è°ƒå‡½æ•°
+ * @note TIM4å®šæ—¶æ—¶é—´1ms
  */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
@@ -178,10 +181,10 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     }
 }
 /**
- * @brief GPIOÖĞ¶Ï»Øµ÷º¯Êı
- * @note AÏà´¥·¢ÖĞ¶Ï£¬BÏàÅĞ¶Ï·½Ïò£¬º¯ÊıÓÃÓÚ¼ÆËãµç»úËÙ¶È
+ * @brief GPIOä¸­æ–­å›è°ƒå‡½æ•°
+ * @note Aç›¸è§¦å‘ä¸­æ–­ï¼ŒBç›¸åˆ¤æ–­æ–¹å‘ï¼Œå‡½æ•°ç”¨äºè®¡ç®—ç”µæœºé€Ÿåº¦
  *
- * @param GPIO_Pin GPIOÒı½ÅºÅ
+ * @param GPIO_Pin GPIOå¼•è„šå·
  */
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
@@ -219,9 +222,9 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
     }
 }
 /**
- * @brief Æô¶¯¶¨Ê±Æ÷PWMÊä³ö
+ * @brief å¯åŠ¨å®šæ—¶å™¨PWMè¾“å‡º
  *
- * @param timHandle ¶¨Ê±Æ÷¾ä±ú
+ * @param timHandle å®šæ—¶å™¨å¥æŸ„
  */
 void PWM_Init(TIM_HandleTypeDef *timHandle)
 {
@@ -231,7 +234,7 @@ void PWM_Init(TIM_HandleTypeDef *timHandle)
     HAL_TIM_PWM_Start(timHandle, TIM_CHANNEL_4);
 }
 /**
- * @brief ÉèÖÃÕ¼¿Õ±È£¬¿ØÖÆµç»úĞı×ª
+ * @brief è®¾ç½®å ç©ºæ¯”ï¼Œæ§åˆ¶ç”µæœºæ—‹è½¬
  *
  */
 void Motor_PWM(void)
@@ -298,11 +301,11 @@ void Motor_PWM(void)
     }
 }
 /**
- * @brief ¼ÆËãÉèÖÃËÙ¶È
+ * @brief è®¡ç®—è®¾ç½®é€Ÿåº¦
  *
- * @param vx XÖá·½ÏòËÙ¶È
- * @param vy YÖá·½ÏòËÙ¶È
- * @param RotateV Ğı×ªËÙ¶È£¬Ë³Ê±ÕëÎª¸ºÖµ£¬ÄæÊ±ÕëÎªÕıÖµ
+ * @param vx Xè½´æ–¹å‘é€Ÿåº¦
+ * @param vy Yè½´æ–¹å‘é€Ÿåº¦
+ * @param RotateV æ—‹è½¬é€Ÿåº¦ï¼Œé¡ºæ—¶é’ˆä¸ºè´Ÿå€¼ï¼Œé€†æ—¶é’ˆä¸ºæ­£å€¼
  */
 void Motor_Speed(int16_t vx, int16_t vy, int16_t RotateV)
 {
@@ -321,8 +324,8 @@ void Motor_Speed(int16_t vx, int16_t vy, int16_t RotateV)
     Limit_Max(chassis.Motor4.Set_speed, MaxSpeed);
 }
 /**
- * @brief µ×ÅÌ´®¿Ú»Øµ÷º¯Êı
- * @note ´®¿Ú½ÓÊÕµ×ÅÌÔË¶¯¿ØÖÆĞÅÏ¢
+ * @brief åº•ç›˜ä¸²å£å›è°ƒå‡½æ•°
+ * @note ä¸²å£æ¥æ”¶åº•ç›˜è¿åŠ¨æ§åˆ¶ä¿¡æ¯
  *
  */
 void Chassis_UART_RxCpltCallback(void)
