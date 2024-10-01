@@ -16,7 +16,7 @@
 
 ## 用法描述
 - 具体串口协议请参考相关协议文档。
-- [doxygen文件](app/html/index.html)
+- [doxygen文件](http://htmlpreview.github.io/?https://github.com/NGC2237plus/ChassisControlSystem/blob/main/app/html/index.html)
 
 ## 固件更新
 
